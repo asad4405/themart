@@ -49,7 +49,7 @@ License: You must have a valid license purchased only from above link or https:/
                 <ul class="nav">
                     <li class="nav-item nav-category">Main</li>
                     <li class="nav-item">
-                        <a href="dashboard-one.html" class="nav-link">
+                        <a href="{{ route('dashboard') }}" class="nav-link">
                             <i class="link-icon" data-feather="box"></i>
                             <span class="link-title">Dashboard</span>
                         </a>
@@ -381,11 +381,11 @@ License: You must have a valid license purchased only from above link or https:/
                 </div>
                 <div class="theme-wrapper">
                     <h6 class="text-muted mb-2">Light Theme:</h6>
-                    <a class="theme-item active" href="{{ asset('backend') }}/demo_1/dashboard-one.html">
+                    <a class="theme-item active" href="{{ asset('backend') }}/demo_1/{{ route('dashboard') }}">
                         <img src="{{ asset('backend') }}/assets/images/screenshots/light.jpg" alt="light theme">
                     </a>
                     <h6 class="text-muted mb-2">Dark Theme:</h6>
-                    <a class="theme-item" href="{{ asset('backend') }}/demo_2/dashboard-one.html">
+                    <a class="theme-item" href="{{ asset('backend') }}/demo_2/{{ route('dashboard') }}">
                         <img src="{{ asset('backend') }}/assets/images/screenshots/dark.jpg" alt="light theme">
                     </a>
                 </div>
@@ -455,7 +455,7 @@ License: You must have a valid license purchased only from above link or https:/
                                         </div>
                                         <div class="content">
                                             <div class="d-flex justify-content-between align-items-center">
-                                                <p>Amiah Burton</p>
+                                                <p>{{ auth()->user()->name }}</p>
                                                 <p class="sub-text text-muted">2 hrs ago</p>
                                             </div>
                                             <p class="sub-text text-muted">Project deadline</p>
@@ -547,31 +547,46 @@ License: You must have a valid license purchased only from above link or https:/
                         <li class="nav-item dropdown nav-profile">
                             <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="https://via.placeholder.com/30x30" alt="profile">
+                                @if (Auth::user()->photo)
+                                    <img src="{{ asset('uploads/user') }}/{{ Auth::user()->photo }}" alt="profile">
+                                @else
+                                    <img src="{{ Avatar::create(Auth::user()->name)->toBase64() }}" />
+                                @endif
                             </a>
                             <div class="dropdown-menu" aria-labelledby="profileDropdown">
                                 <div class="dropdown-header d-flex flex-column align-items-center">
                                     <div class="figure mb-3">
-                                        <img src="https://via.placeholder.com/80x80" alt="">
+                                        @if (Auth::user()->photo)
+                                            <img src="{{ asset('uploads/user') }}/{{ Auth::user()->photo }}" alt="">
+                                        @else
+                                            <img src="{{ Avatar::create(Auth::user()->name)->toBase64() }}" />
+                                        @endif
                                     </div>
                                     <div class="info text-center">
-                                        <p class="name font-weight-bold mb-0">Amiah Burton</p>
-                                        <p class="email text-muted mb-3">amiahburton@gmail.com</p>
+                                        <p class="name font-weight-bold mb-0">{{ Auth::user()->name }}</p>
+                                        <p class="email text-muted mb-3">{{ Auth::user()->email }}</p>
                                     </div>
                                 </div>
                                 <div class="dropdown-body">
                                     <ul class="profile-nav p-0 pt-3">
                                         <li class="nav-item">
-                                            <a href="pages/general/profile.html" class="nav-link">
+                                            <a href="{{ route('user.update') }}" class="nav-link">
                                                 <i data-feather="user"></i>
                                                 <span>Profile</span>
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="javascript:;" class="nav-link">
-                                                <i data-feather="log-out"></i>
-                                                <span>Log Out</span>
-                                            </a>
+                                            <form method="POST" action="{{ route('logout') }}">
+                                                @csrf
+
+                                                <a href="{{ route('logout') }}" class="nav-link"
+                                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                                    <i data-feather="log-out"></i>
+                                                    <span>Log Out</span>
+                                                </a>
+                                            </form>
+
                                         </li>
                                     </ul>
                                 </div>
@@ -584,10 +599,15 @@ License: You must have a valid license purchased only from above link or https:/
 
             <div class="page-content">
 
+                <nav class="page-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Home</li>
+                    </ol>
+                </nav>
+
                 <div class="justify-content-between align-items-center flex-wrap grid-margin">
-                    <div>
-                        <h4 class="mb-3 mb-md-0">Welcome to Dashboard</h4>
-                    </div>
+                    @yield('content')
                 </div>
 
             </div>
