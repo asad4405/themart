@@ -59,13 +59,13 @@ License: You must have a valid license purchased only from above link or https:/
                         <a class="nav-link" data-toggle="collapse" href="#emails" role="button" aria-expanded="false"
                             aria-controls="emails">
                             <i class="link-icon" data-feather="mail"></i>
-                            <span class="link-title">Email</span>
+                            <span class="link-title">User</span>
                             <i class="link-arrow" data-feather="chevron-down"></i>
                         </a>
                         <div class="collapse" id="emails">
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
-                                    <a href="pages/email/inbox.html" class="nav-link">Inbox</a>
+                                    <a href="{{ route('user.list') }}" class="nav-link">User List</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="pages/email/read.html" class="nav-link">Read</a>
@@ -93,73 +93,13 @@ License: You must have a valid license purchased only from above link or https:/
                         <a class="nav-link" data-toggle="collapse" href="#uiComponents" role="button"
                             aria-expanded="false" aria-controls="uiComponents">
                             <i class="link-icon" data-feather="feather"></i>
-                            <span class="link-title">UI Kit</span>
+                            <span class="link-title">Category</span>
                             <i class="link-arrow" data-feather="chevron-down"></i>
                         </a>
                         <div class="collapse" id="uiComponents">
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
-                                    <a href="pages/ui-components/alerts.html" class="nav-link">Alerts</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/ui-components/badges.html" class="nav-link">Badges</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/ui-components/breadcrumbs.html" class="nav-link">Breadcrumbs</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/ui-components/buttons.html" class="nav-link">Buttons</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/ui-components/button-group.html" class="nav-link">Button group</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/ui-components/cards.html" class="nav-link">Cards</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/ui-components/carousel.html" class="nav-link">Carousel</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/ui-components/collapse.html" class="nav-link">Collapse</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/ui-components/dropdowns.html" class="nav-link">Dropdowns</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/ui-components/list-group.html" class="nav-link">List group</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/ui-components/media-object.html" class="nav-link">Media object</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/ui-components/modal.html" class="nav-link">Modal</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/ui-components/navs.html" class="nav-link">Navs</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/ui-components/navbar.html" class="nav-link">Navbar</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/ui-components/pagination.html" class="nav-link">Pagination</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/ui-components/popover.html" class="nav-link">Popovers</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/ui-components/progress.html" class="nav-link">Progress</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/ui-components/scrollbar.html" class="nav-link">Scrollbar</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/ui-components/scrollspy.html" class="nav-link">Scrollspy</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/ui-components/spinners.html" class="nav-link">Spinners</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/ui-components/tooltips.html" class="nav-link">Tooltips</a>
+                                    <a href="{{ route('category') }}" class="nav-link">Add Category</a>
                                 </li>
                             </ul>
                         </div>
@@ -455,7 +395,7 @@ License: You must have a valid license purchased only from above link or https:/
                                         </div>
                                         <div class="content">
                                             <div class="d-flex justify-content-between align-items-center">
-                                                <p>{{ auth()->user()->name }}</p>
+                                                <p>{{ Auth::user()->name }}</p>
                                                 <p class="sub-text text-muted">2 hrs ago</p>
                                             </div>
                                             <p class="sub-text text-muted">Project deadline</p>
