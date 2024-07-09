@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,4 +45,9 @@ Route::get('/category/permanent/delete/{category_id}', [CategoryController::clas
 Route::post('/checked/delete',[CategoryController::class, 'checked_delete'])->name('checked.delete');
 Route::post('/checked/restore',[CategoryController::class, 'checked_restore'])->name('checked.restore');
 
-
+// Sub Category
+Route::get('/subcategory',[SubCategoryController::class, 'sub_category'])->name('sub.category');
+Route::post('/subcategory/store',[SubCategoryController::class, 'sub_category_store'])->name('sub.category.store');
+Route::get('/subcategory/edit/{subcategory_id}',[SubCategoryController::class, 'sub_category_edit'])->name('sub.category.edit');
+Route::post('/subcategory/update/{subcategory_id}',[SubCategoryController::class, 'sub_category_update'])->name('sub.category.update');
+Route::get('/subcategory/delete/{subcategory_id}',[SubCategoryController::class, 'sub_category_delete'])->name('sub.category.delete');

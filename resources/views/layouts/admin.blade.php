@@ -90,6 +90,9 @@ License: You must have a valid license purchased only from above link or https:/
                                     <a href="{{ route('category') }}" class="nav-link">Add Category</a>
                                 </li>
                                 <li class="nav-item">
+                                    <a href="{{ route('sub.category') }}" class="nav-link">Add Sub Category</a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="{{ route('category.trash') }}" class="nav-link">Category Trash</a>
                                 </li>
                             </ul>
@@ -573,6 +576,7 @@ License: You must have a valid license purchased only from above link or https:/
     <!-- custom js for this page -->
     <script src="{{ asset('backend') }}/assets/js/dashboard.js"></script>
     <script src="{{ asset('backend') }}/assets/js/datepicker.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- end custom js for this page -->
     @yield('footer_script')
 </body>
