@@ -67,12 +67,6 @@ License: You must have a valid license purchased only from above link or https:/
                                 <li class="nav-item">
                                     <a href="{{ route('user.list') }}" class="nav-link">User List</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="pages/email/read.html" class="nav-link">Read</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/email/compose.html" class="nav-link">Compose</a>
-                                </li>
                             </ul>
                         </div>
                     </li>
@@ -80,12 +74,6 @@ License: You must have a valid license purchased only from above link or https:/
                         <a href="pages/apps/chat.html" class="nav-link">
                             <i class="link-icon" data-feather="message-square"></i>
                             <span class="link-title">Chat</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/apps/calendar.html" class="nav-link">
-                            <i class="link-icon" data-feather="calendar"></i>
-                            <span class="link-title">Calendar</span>
                         </a>
                     </li>
                     <li class="nav-item nav-category">Components</li>
@@ -100,6 +88,9 @@ License: You must have a valid license purchased only from above link or https:/
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
                                     <a href="{{ route('category') }}" class="nav-link">Add Category</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('category.trash') }}" class="nav-link">Category Trash</a>
                                 </li>
                             </ul>
                         </div>
@@ -583,6 +574,7 @@ License: You must have a valid license purchased only from above link or https:/
     <script src="{{ asset('backend') }}/assets/js/dashboard.js"></script>
     <script src="{{ asset('backend') }}/assets/js/datepicker.js"></script>
     <!-- end custom js for this page -->
+    @yield('footer_script')
 </body>
 
 </html>
