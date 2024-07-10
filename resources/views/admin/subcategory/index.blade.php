@@ -31,8 +31,13 @@
                                                             class="btn btn-primary btn-icon">
                                                             <i data-feather="edit"></i>
                                                         </a>
-                                                        <a href="" class="btn btn-danger btn-icon delete_btn"
-                                                            data-link="{{ route('sub.category.delete', $subcategory->id) }}">
+                                                        <a
+                                                        href="{{ route('sub.category.delete', $subcategory->id) }}"
+                                                        class="btn btn-danger btn-icon
+                                                        {{-- delete_btn --}}
+                                                        "
+                                                            {{-- data-link="{{ route('sub.category.delete', $subcategory->id) }}" --}}
+                                                            >
                                                             <i data-feather="trash"></i>
                                                         </a>
                                                     </td>

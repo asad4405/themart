@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\UserController;
@@ -42,12 +44,23 @@ Route::get('/category/soft/delete/{category_id}', [CategoryController::class, 'c
 Route::get('/category/trash', [CategoryController::class, 'category_trash'])->name('category.trash');
 Route::get('/category/restore/{category_id}', [CategoryController::class, 'category_restore'])->name('category.restore');
 Route::get('/category/permanent/delete/{category_id}', [CategoryController::class, 'category_permanent_delete'])->name('category.permanent.delete');
-Route::post('/checked/delete',[CategoryController::class, 'checked_delete'])->name('checked.delete');
-Route::post('/checked/restore',[CategoryController::class, 'checked_restore'])->name('checked.restore');
+Route::post('/checked/delete', [CategoryController::class, 'checked_delete'])->name('checked.delete');
+Route::post('/checked/restore', [CategoryController::class, 'checked_restore'])->name('checked.restore');
 
 // Sub Category
-Route::get('/subcategory',[SubCategoryController::class, 'sub_category'])->name('sub.category');
-Route::post('/subcategory/store',[SubCategoryController::class, 'sub_category_store'])->name('sub.category.store');
-Route::get('/subcategory/edit/{subcategory_id}',[SubCategoryController::class, 'sub_category_edit'])->name('sub.category.edit');
-Route::post('/subcategory/update/{subcategory_id}',[SubCategoryController::class, 'sub_category_update'])->name('sub.category.update');
-Route::get('/subcategory/delete/{subcategory_id}',[SubCategoryController::class, 'sub_category_delete'])->name('sub.category.delete');
+Route::get('/subcategory', [SubCategoryController::class, 'sub_category'])->name('sub.category');
+Route::post('/subcategory/store', [SubCategoryController::class, 'sub_category_store'])->name('sub.category.store');
+Route::get('/subcategory/edit/{subcategory_id}', [SubCategoryController::class, 'sub_category_edit'])->name('sub.category.edit');
+Route::post('/subcategory/update/{subcategory_id}', [SubCategoryController::class, 'sub_category_update'])->name('sub.category.update');
+Route::get('/subcategory/delete/{subcategory_id}', [SubCategoryController::class, 'sub_category_delete'])->name('sub.category.delete');
+
+// Brand
+Route::get('/brand', [BrandController::class, 'brand'])->name('brand');
+Route::post('/brand/store', [BrandController::class, 'brand_store'])->name('brand.store');
+
+// Product
+Route::get('/add/product', [ProductController::class, 'add_product'])->name('add.product');
+Route::post('/getsubcategory', [ProductController::class, 'get_subcategory']);
+Route::post('/product/store', [ProductController::class, 'product_store'])->name('product.store');
+Route::get('/product/list', [ProductController::class, 'product_list'])->name('product.list');
+Route::get('/product/show/{product_id}', [ProductController::class, 'product_show'])->name('product.show');

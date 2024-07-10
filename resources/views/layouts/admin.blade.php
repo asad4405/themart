@@ -13,6 +13,7 @@ License: You must have a valid license purchased only from above link or https:/
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>NobleUI Responsive Bootstrap 4 Dashboard Template</title>
     <!-- core:css -->
     <link rel="stylesheet" href="{{ asset('backend') }}/assets/vendors/core/core.css">
@@ -28,6 +29,11 @@ License: You must have a valid license purchased only from above link or https:/
     <link rel="stylesheet" href="{{ asset('backend') }}/assets/css/demo_1/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('backend') }}/assets/images/favicon.png" />
+
+    {{-- selectize jquery --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/css/selectize.default.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -102,16 +108,19 @@ License: You must have a valid license purchased only from above link or https:/
                         <a class="nav-link" data-toggle="collapse" href="#advancedUI" role="button"
                             aria-expanded="false" aria-controls="advancedUI">
                             <i class="link-icon" data-feather="anchor"></i>
-                            <span class="link-title">Advanced UI</span>
+                            <span class="link-title">Products</span>
                             <i class="link-arrow" data-feather="chevron-down"></i>
                         </a>
                         <div class="collapse" id="advancedUI">
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
-                                    <a href="pages/advanced-ui/cropper.html" class="nav-link">Cropper</a>
+                                    <a href="{{ route('brand') }}" class="nav-link">Brand</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/advanced-ui/owl-carousel.html" class="nav-link">Owl carousel</a>
+                                    <a href="{{ route('add.product') }}" class="nav-link">Add New Product</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('product.list') }}" class="nav-link">Product List</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="pages/advanced-ui/sweet-alert.html" class="nav-link">Sweet Alert</a>
@@ -577,6 +586,8 @@ License: You must have a valid license purchased only from above link or https:/
     <script src="{{ asset('backend') }}/assets/js/dashboard.js"></script>
     <script src="{{ asset('backend') }}/assets/js/datepicker.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/js/standalone/selectize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <!-- end custom js for this page -->
     @yield('footer_script')
 </body>
