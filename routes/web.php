@@ -4,6 +4,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubCategoryController;
@@ -72,5 +73,20 @@ Route::post('/color/store',[VariationController::class,'color_store'])->name('co
 Route::get('/color/delete/{color_id}',[VariationController::class, 'color_delete'])->name('color.delete');
 Route::post('/size/store',[VariationController::class,'size_store'])->name('size.store');
 Route::get('/size/delete/{size_id}',[VariationController::class, 'size_delete'])->name('size.delete');
+
+// Inventory
+Route::get('/inventory/{product_id}',[InventoryController::class,'add_inventory'])->name('add.inventory');
+Route::post('/inventory/store/{product_id}',[InventoryController::class,'inventory_store'])->name('inventory.store');
+Route::get('/inventory/delete/{inventory_id}',[InventoryController::class,'inventory_delete'])->name('inventory.delete');
+
+
+
+
+
+
+
+
+
+
 
 

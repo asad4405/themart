@@ -30,11 +30,13 @@
                                         width="50"></td>
                                 <td></td>
                                 <td>
-                                    <a href="{{ route('product.show',$product->id) }}" class="btn btn-primary btn-icon">
+                                    <a href="{{ route('add.inventory', $product->id) }}" class="btn btn-info btn-icon">
+                                        <i data-feather="layers"></i>
+                                    </a>
+                                    <a href="{{ route('product.show', $product->id) }}" class="btn btn-primary btn-icon">
                                         <i data-feather="eye"></i>
                                     </a>
-                                    <a href=""
-                                        class="btn btn-danger btn-icon">
+                                    <a href="" class="btn btn-danger btn-icon">
                                         <i data-feather="trash"></i>
                                     </a>
                                 </td>
