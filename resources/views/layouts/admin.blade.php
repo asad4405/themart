@@ -19,7 +19,8 @@ License: You must have a valid license purchased only from above link or https:/
     <link rel="stylesheet" href="{{ asset('backend') }}/assets/vendors/core/core.css">
     <!-- endinject -->
     <!-- plugin css for this page -->
-    <link rel="stylesheet" href="{{ asset('backend') }}/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+    <link rel="stylesheet"
+        href="{{ asset('backend') }}/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
     <!-- end plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="{{ asset('backend') }}/assets/fonts/feather-font/css/iconfont.css">
@@ -31,7 +32,8 @@ License: You must have a valid license purchased only from above link or https:/
     <link rel="shortcut icon" href="{{ asset('backend') }}/assets/images/favicon.png" />
 
     {{-- selectize jquery --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/css/selectize.default.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/css/selectize.default.min.css">
 
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 </head>
@@ -123,7 +125,7 @@ License: You must have a valid license purchased only from above link or https:/
                                     <a href="{{ route('product.list') }}" class="nav-link">Product List</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/advanced-ui/sweet-alert.html" class="nav-link">Sweet Alert</a>
+                                    <a href="{{ route('variation') }}" class="nav-link">Variation</a>
                                 </li>
                             </ul>
                         </div>
@@ -500,7 +502,8 @@ License: You must have a valid license purchased only from above link or https:/
                                 <div class="dropdown-header d-flex flex-column align-items-center">
                                     <div class="figure mb-3">
                                         @if (Auth::user()->photo)
-                                            <img src="{{ asset('uploads/user') }}/{{ Auth::user()->photo }}" alt="">
+                                            <img src="{{ asset('uploads/user') }}/{{ Auth::user()->photo }}"
+                                                alt="">
                                         @else
                                             <img src="{{ Avatar::create(Auth::user()->name)->toBase64() }}" />
                                         @endif

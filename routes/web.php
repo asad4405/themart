@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VariationController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -64,3 +65,12 @@ Route::post('/getsubcategory', [ProductController::class, 'get_subcategory']);
 Route::post('/product/store', [ProductController::class, 'product_store'])->name('product.store');
 Route::get('/product/list', [ProductController::class, 'product_list'])->name('product.list');
 Route::get('/product/show/{product_id}', [ProductController::class, 'product_show'])->name('product.show');
+
+//  Variation
+Route::get('/variation',[VariationController::class,'variation'])->name('variation');
+Route::post('/color/store',[VariationController::class,'color_store'])->name('color.store');
+Route::get('/color/delete/{color_id}',[VariationController::class, 'color_delete'])->name('color.delete');
+Route::post('/size/store',[VariationController::class,'size_store'])->name('size.store');
+Route::get('/size/delete/{size_id}',[VariationController::class, 'size_delete'])->name('size.delete');
+
+
