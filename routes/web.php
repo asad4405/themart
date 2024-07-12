@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\OfferController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubCategoryController;
@@ -25,6 +27,16 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+// Banner
+Route::get('/banner',[BannerController::class,'banner'])->name('banner');
+Route::post('/banner/store',[BannerController::class,'banner_store'])->name('banner.store');
+Route::get('/banner/delete/{banner_id}',[BannerController::class,'banner_delete'])->name('banner.delete');
+
+// Offer
+Route::get('/offer',[OfferController::class,'offer'])->name('offer');
+Route::post('/offer/one/update/{offer_one_id}',[OfferController::class,'offer_one_update'])->name('offer.one.update');
+Route::post('/offer/two/update/{offer_two_id}',[OfferController::class,'offer_two_update'])->name('offer.two.update');
 
 // user //
 Route::get('/user/update', [UserController::class, 'user_update'])->name('user.update');

@@ -461,6 +461,7 @@
     <script src="{{ asset('frontend/assets') }}/js/jquery-plugin-collection.js"></script>
     <!-- Custom script for this template -->
     <script src="{{ asset('frontend/assets') }}/js/script.js"></script>
+    @yield('footer_script')
 </body>
 
 </html>
