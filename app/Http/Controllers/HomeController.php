@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Subscribe;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,24 +11,24 @@ use Illuminate\Support\Facades\Password;
 
 class HomeController extends Controller
 {
-    public function dashboard()
+    function dashboard()
     {
         return view('dashboard');
     }
 
-    public function user_list()
+    function user_list()
     {
         $users = User::where('id','!=', Auth::id())->get();
         return view('admin.user.user_list',compact('users'));
     }
 
-    public function user_delete($user_id)
+    function user_delete($user_id)
     {
         User::find($user_id)->delete();
         return back()->with('user_delete','User Deleted Successfull!');
     }
 
-    public function user_add(Request $request)
+    function user_add(Request $request)
     {
         $request->validate([
             '*' => 'required',
@@ -42,5 +43,17 @@ class HomeController extends Controller
             'password' => Hash::make($request->password),
         ]);
         return back()->with('success','New User Added!');
+    }
+
+    function subscribe_list()
+    {
+        $subscribes = Subscribe::all();
+        return view('admin.subscribe.subscribe_list',compact('subscribes'));
+    }
+
+    function subscribe_delete($subscribe_id)
+    {
+        Subscribe::find($subscribe_id)->delete();
+        return back()->with('subscribe_delete','Subscriber Deleted!');
     }
 }

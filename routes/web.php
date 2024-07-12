@@ -29,14 +29,9 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 // Banner
-Route::get('/banner',[BannerController::class,'banner'])->name('banner');
-Route::post('/banner/store',[BannerController::class,'banner_store'])->name('banner.store');
-Route::get('/banner/delete/{banner_id}',[BannerController::class,'banner_delete'])->name('banner.delete');
-
-// Offer
-Route::get('/offer',[OfferController::class,'offer'])->name('offer');
-Route::post('/offer/one/update/{offer_one_id}',[OfferController::class,'offer_one_update'])->name('offer.one.update');
-Route::post('/offer/two/update/{offer_two_id}',[OfferController::class,'offer_two_update'])->name('offer.two.update');
+Route::get('/banner', [BannerController::class, 'banner'])->name('banner');
+Route::post('/banner/store', [BannerController::class, 'banner_store'])->name('banner.store');
+Route::get('/banner/delete/{banner_id}', [BannerController::class, 'banner_delete'])->name('banner.delete');
 
 // user //
 Route::get('/user/update', [UserController::class, 'user_update'])->name('user.update');
@@ -80,24 +75,26 @@ Route::get('/product/list', [ProductController::class, 'product_list'])->name('p
 Route::get('/product/show/{product_id}', [ProductController::class, 'product_show'])->name('product.show');
 
 //  Variation
-Route::get('/variation',[VariationController::class,'variation'])->name('variation');
-Route::post('/color/store',[VariationController::class,'color_store'])->name('color.store');
-Route::get('/color/delete/{color_id}',[VariationController::class, 'color_delete'])->name('color.delete');
-Route::post('/size/store',[VariationController::class,'size_store'])->name('size.store');
-Route::get('/size/delete/{size_id}',[VariationController::class, 'size_delete'])->name('size.delete');
+Route::get('/variation', [VariationController::class, 'variation'])->name('variation');
+Route::post('/color/store', [VariationController::class, 'color_store'])->name('color.store');
+Route::get('/color/delete/{color_id}', [VariationController::class, 'color_delete'])->name('color.delete');
+Route::post('/size/store', [VariationController::class, 'size_store'])->name('size.store');
+Route::get('/size/delete/{size_id}', [VariationController::class, 'size_delete'])->name('size.delete');
 
 // Inventory
-Route::get('/inventory/{product_id}',[InventoryController::class,'add_inventory'])->name('add.inventory');
-Route::post('/inventory/store/{product_id}',[InventoryController::class,'inventory_store'])->name('inventory.store');
-Route::get('/inventory/delete/{inventory_id}',[InventoryController::class,'inventory_delete'])->name('inventory.delete');
+Route::get('/inventory/{product_id}', [InventoryController::class, 'add_inventory'])->name('add.inventory');
+Route::post('/inventory/store/{product_id}', [InventoryController::class, 'inventory_store'])->name('inventory.store');
+Route::get('/inventory/delete/{inventory_id}', [InventoryController::class, 'inventory_delete'])->name('inventory.delete');
 
+// Offer
+Route::get('/offer', [OfferController::class, 'offer'])->name('offer');
+Route::post('/offer/one/update/{offer_one_id}', [OfferController::class, 'offer_one_update'])->name('offer.one.update');
+Route::post('/offer/two/update/{offer_two_id}', [OfferController::class, 'offer_two_update'])->name('offer.two.update');
 
-
-
-
-
-
-
+// Subscribe
+Route::post('/subscribe/store',[FrontendController::class, 'subscribe_store'])->name('subscribe.store');
+Route::get('/subscribe/list',[HomeController::class, 'subscribe_list'])->name('subscribe.list');
+Route::get('/subscribe/delete/{subscribe_id}',[HomeController::class, 'subscribe_delete'])->name('subscribe.delete');
 
 
 

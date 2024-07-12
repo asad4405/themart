@@ -256,6 +256,21 @@ License: You must have a valid license purchased only from above link or https:/
                         </div>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#subscribe" role="button"
+                            aria-expanded="false" aria-controls="subscribe">
+                            <i class="link-icon" data-feather="layout"></i>
+                            <span class="link-title">Subscribes</span>
+                            <i class="link-arrow" data-feather="chevron-down"></i>
+                        </a>
+                        <div class="collapse" id="subscribe">
+                            <ul class="nav sub-menu">
+                                <li class="nav-item">
+                                    <a href="{{ route('subscribe.list') }}" class="nav-link">Subscribe List</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#errorPages" role="button"
                             aria-expanded="false" aria-controls="errorPages">
                             <i class="link-icon" data-feather="cloud-off"></i>
