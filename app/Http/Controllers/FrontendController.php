@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Offer_one;
 use App\Models\Offer_two;
 use App\Models\Product;
+use App\Models\ProductGrallery;
 use App\Models\Subscribe;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -44,5 +45,16 @@ class FrontendController extends Controller
             'created_at' => Carbon::now(),
         ]);
         return back();
+    }
+
+    function product_details ($slug)
+    {
+        $product_id = Product::where('slug',$slug)->first()->id;
+        $product = Product::find($product_id);
+        $galleries = ProductGrallery::where('product_id',$product->id)->get();
+        return view('frontend.product_details',[
+            'product' => $product,
+            'galleries' => $galleries,
+        ]);
     }
 }

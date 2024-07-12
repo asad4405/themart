@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [FrontendController::class, 'index'])->name('index');
+Route::get('/product/details/{slug}',[FrontendController::class,'product_details'])->name('product_details');
+
 
 Route::get('/dashboard', [HomeController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 

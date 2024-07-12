@@ -137,13 +137,15 @@
                                     @endif
                                 </div>
                                 <div class="text">
-                                    <h2><a href="product-single.html" title="{{ $product->product_name }}">
+                                    <h2>
+                                        <a href="{{ route('product_details',$product->slug) }}" title="{{ $product->product_name }}">
                                             @if (strlen($product->product_name) > 20)
                                                 {{ substr($product->product_name, 0, 20) . '...' }}
                                             @else
                                                 {{ $product->product_name }}
                                             @endif
-                                        </a></h2>
+                                        </a>
+                                    </h2>
                                     <div class="rating-product">
                                         <i class="fi flaticon-star"></i>
                                         <i class="fi flaticon-star"></i>

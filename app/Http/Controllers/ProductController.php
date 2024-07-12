@@ -49,6 +49,8 @@ class ProductController extends Controller
 
         Image::make($preview)->save(public_path('uploads/product/' . $file_name));
 
+        $slug = Str::lower(str_replace($remove, '-', $request->product_name)).'-' . random_int(10000, 90000);
+
         $product_id = Product::insertGetId([
             'category_id' => $request->category_id,
             'subcategory_id' => $request->subcategory_id,
@@ -62,6 +64,7 @@ class ProductController extends Controller
             'long_desp' => $request->long_desp,
             'addi_info' => $request->addi_info,
             'preview' => $file_name,
+            'slug' => $slug,
             'created_at' => Carbon::now(),
         ]);
 
