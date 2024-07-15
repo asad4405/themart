@@ -124,8 +124,16 @@
                                     <li><a href="compare.html"><i
                                                 class="fi flaticon-right-and-left"></i><span>Compare</span></a>
                                     </li>
-                                    <li><a href="login.html"><i
-                                                class="fi flaticon-user-profile"></i><span>Login</span></a></li>
+                                    <li>
+                                        @auth('customer')
+                                            <a href=""><i
+                                                    class="fi flaticon-user-profile"></i><span>{{ Auth::guard('customer')->user()->fname . ' ' . Auth::guard('customer')->user()->lname }}</span>
+                                            @else
+                                                <a href="{{ route('customer.login') }}"><i
+                                                        class="fi flaticon-user-profile"></i><span>Login</span>
+                                                @endauth
+                                            </a>
+                                    </li>
                                     <li>
                                         <div class="header-wishlist-form-wrapper">
                                             <button class="wishlist-toggle-btn"> <i class="fi flaticon-heart"></i>
@@ -133,7 +141,7 @@
                                             <div class="mini-wislist-content">
                                                 <button class="mini-cart-close"><i class="ti-close"></i></button>
                                                 <div class="mini-cart-items">
-                                                    <div class="mini-cart-item clearfix">
+                                                    <div class="clearfix mini-cart-item">
                                                         <div class="mini-cart-item-image">
                                                             <a href="product.html"><img
                                                                     src="{{ asset('frontend/assets') }}/images/cart/img-1.jpg"
@@ -146,7 +154,7 @@
                                                                         class="ti-close"></i></a></span>
                                                         </div>
                                                     </div>
-                                                    <div class="mini-cart-item clearfix">
+                                                    <div class="clearfix mini-cart-item">
                                                         <div class="mini-cart-item-image">
                                                             <a href="product.html"><img
                                                                     src="{{ asset('frontend/assets') }}/images/cart/img-2.jpg"
@@ -159,7 +167,7 @@
                                                                         class="ti-close"></i></a></span>
                                                         </div>
                                                     </div>
-                                                    <div class="mini-cart-item clearfix">
+                                                    <div class="clearfix mini-cart-item">
                                                         <div class="mini-cart-item-image">
                                                             <a href="product.html"><img
                                                                     src="{{ asset('frontend/assets') }}/images/cart/img-3.jpg"
@@ -173,7 +181,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="mini-cart-action clearfix">
+                                                <div class="clearfix mini-cart-action">
                                                     <div class="mini-btn">
                                                         <a href="wishlist.html" class="view-cart-btn">View
                                                             Wishlist</a>
@@ -189,7 +197,7 @@
                                             <div class="mini-cart-content">
                                                 <button class="mini-cart-close"><i class="ti-close"></i></button>
                                                 <div class="mini-cart-items">
-                                                    <div class="mini-cart-item clearfix">
+                                                    <div class="clearfix mini-cart-item">
                                                         <div class="mini-cart-item-image">
                                                             <a href="product.html"><img
                                                                     src="{{ asset('frontend/assets') }}/images/cart/img-1.jpg"
@@ -202,7 +210,7 @@
                                                                         class="ti-close"></i></a></span>
                                                         </div>
                                                     </div>
-                                                    <div class="mini-cart-item clearfix">
+                                                    <div class="clearfix mini-cart-item">
                                                         <div class="mini-cart-item-image">
                                                             <a href="product.html"><img
                                                                     src="{{ asset('frontend/assets') }}/images/cart/img-2.jpg"
@@ -216,7 +224,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="mini-cart-action clearfix">
+                                                <div class="clearfix mini-cart-action">
                                                     <span class="mini-checkout-price">Subtotal:
                                                         <span>$390</span></span>
                                                     <div class="mini-btn">
@@ -264,7 +272,9 @@
                                                         href="#">{{ $category->category_name }}</a>
                                                     <ul class="header-catagory-single">
                                                         @foreach (App\Models\Subcategory::where('category_id', $category->id)->get() as $subcategory)
-                                                            <li><a href="#">{{ $subcategory->sub_category_name }}</a></li>
+                                                            <li><a
+                                                                    href="#">{{ $subcategory->sub_category_name }}</a>
+                                                            </li>
                                                         @endforeach
                                                     </ul>
                                                 </li>
@@ -276,7 +286,7 @@
                             <div class="col-lg-8 col-md-1 col-1">
                                 <div id="navbar" class="collapse navbar-collapse navigation-holder">
                                     <button class="menu-close"><i class="ti-close"></i></button>
-                                    <ul class="nav navbar-nav mb-2 mb-lg-0">
+                                    <ul class="mb-2 nav navbar-nav mb-lg-0">
                                         <li class="menu-item-has-children">
                                             <a href="#">Home</a>
                                         </li>

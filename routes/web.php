@@ -3,6 +3,7 @@
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerAuthController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InventoryController;
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [FrontendController::class, 'index'])->name('index');
-Route::get('/product/details/{slug}',[FrontendController::class,'product_details'])->name('product_details');
+Route::get('/product/details/{slug}', [FrontendController::class, 'product_details'])->name('product_details');
 Route::post('/getsize', [FrontendController::class, 'get_size']);
 Route::post('/getquantity', [FrontendController::class, 'get_quantity']);
 
@@ -96,10 +97,13 @@ Route::post('/offer/one/update/{offer_one_id}', [OfferController::class, 'offer_
 Route::post('/offer/two/update/{offer_two_id}', [OfferController::class, 'offer_two_update'])->name('offer.two.update');
 
 // Subscribe
-Route::post('/subscribe/store',[FrontendController::class, 'subscribe_store'])->name('subscribe.store');
-Route::get('/subscribe/list',[HomeController::class, 'subscribe_list'])->name('subscribe.list');
-Route::get('/subscribe/delete/{subscribe_id}',[HomeController::class, 'subscribe_delete'])->name('subscribe.delete');
+Route::post('/subscribe/store', [FrontendController::class, 'subscribe_store'])->name('subscribe.store');
+Route::get('/subscribe/list', [HomeController::class, 'subscribe_list'])->name('subscribe.list');
+Route::get('/subscribe/delete/{subscribe_id}', [HomeController::class, 'subscribe_delete'])->name('subscribe.delete');
 
 
-
-
+// Customer
+Route::get('/customer/login', [CustomerAuthController::class,'customer_login'])->name('customer.login');
+Route::get('/customer/register', [CustomerAuthController::class,'customer_register'])->name('customer.register');
+Route::post('/customer/store', [CustomerAuthController::class,'customer_store'])->name('customer.store');
+Route::post('/customer/logged', [CustomerAuthController::class,'customer_logged'])->name('customer.logged');
