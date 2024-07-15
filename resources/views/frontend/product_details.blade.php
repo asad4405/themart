@@ -67,53 +67,43 @@
                                 <div class="color-name">
                                     <span>Color :</span>
                                     <ul>
-                                        <li class="color1"><input id="a1" type="radio" name="color"
-                                                value="30">
-                                            <label for="a1"></label>
-                                        </li>
-                                        <li class="color2"><input id="a2" type="radio" name="color"
-                                                value="30">
-                                            <label for="a2"></label>
-                                        </li>
-                                        <li class="color3"><input id="a3" type="radio" name="color"
-                                                value="30">
-                                            <label for="a3"></label>
-                                        </li>
-                                        <li class="color4"><input id="a4" type="radio" name="color"
-                                                value="30">
-                                            <label for="a4"></label>
-                                        </li>
-                                        <li class="color5"><input id="a5" type="radio" name="color"
-                                                value="30">
-                                            <label for="a5"></label>
-                                        </li>
+                                        @foreach ($available_colors as $available_color)
+                                            @if ($available_color->color->color_name == 'NA')
+                                                <li class="color1">
+                                                    <input checked disabled id="color{{ $available_color->color_id }}"
+                                                        type="radio" name="color_id" class="color_id"
+                                                        value="{{ $available_color->color_id }}">
+                                                    <label title="{{ $available_color->color->color_name }}"
+                                                        for="color{{ $available_color->color_id }}"
+                                                        style="background: {{ $available_color->color->color_code }}">NA
+                                                    </label>
+                                                </li>
+                                            @else
+                                                <li class="color1">
+                                                    <input id="{{ $available_color->color_id }}" type="radio"
+                                                        name="color_id" class="color_id"
+                                                        value="{{ $available_color->color_id }}">
+                                                    <label title="{{ $available_color->color->color_name }}"
+                                                        for="{{ $available_color->color_id }}"
+                                                        style="background: {{ $available_color->color->color_code }}">
+                                                    </label>
+                                                </li>
+                                            @endif
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
                             <div class="product-filter-item color filter-size">
                                 <div class="color-name">
                                     <span>Sizes:</span>
-                                    <ul>
-                                        <li class="color"><input id="sz1" type="radio" name="size"
-                                                value="30">
-                                            <label for="sz1">S</label>
-                                        </li>
-                                        <li class="color"><input id="sz2" type="radio" name="size"
-                                                value="30">
-                                            <label for="sz2">M</label>
-                                        </li>
-                                        <li class="color"><input id="sz3" type="radio" name="size"
-                                                value="30">
-                                            <label for="sz3">L</label>
-                                        </li>
-                                        <li class="color"><input id="sz4" type="radio" name="size"
-                                                value="30">
-                                            <label for="sz4">X</label>
-                                        </li>
-                                        <li class="color"><input id="sz5" type="radio" name="size"
-                                                value="30">
-                                            <label for="sz5">XL</label>
-                                        </li>
+                                    <ul class="available_size">
+                                        @foreach ($available_sizes as $available_size)
+                                            <li class="color"><input class="size_id" id="{{ $available_size->size_id }}"
+                                                    type="radio" name="size_id" value="{{ $available_size->size_id }}">
+                                                <label
+                                                    for="{{ $available_size->size_id }}">{{ $available_size->size->size_name }}</label>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
@@ -134,6 +124,11 @@
                                     @foreach ($after_explode as $tag)
                                         <a href="" class="badge bg-success">{{ $tag }}</a>
                                     @endforeach
+                                </li>
+                                <li>
+                                    <p>Stock:
+                                        <span id="quantity"> Color and Size</span>
+                                    </p>
                                 </li>
                             </ul>
                         </div>
@@ -378,4 +373,55 @@
         </div>
     </div>
     <!-- product-single-section  end-->
+@endsection
+@section('footer_script')
+    <script>
+        $('.color_id').click(function() {
+            var color_id = $(this).val();
+            var product_id = {{ $product->id }};
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                url: '/getsize',
+                type: 'POST',
+                data: {
+                    'color_id': color_id,
+                    'product_id': product_id
+                },
+                success: function(data) {
+                    $('.available_size').html(data)
+
+                    $('.size_id').click(function() {
+                        var size_id = $(this).val();
+
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                                    'content')
+                            }
+                        });
+
+                        $.ajax({
+                            url: '/getquantity',
+                            type: 'POST',
+                            data: {
+                                'color_id': color_id,
+                                'product_id': product_id,
+                                'size_id': size_id
+                            },
+                            success: function(data) {
+                                $('#quantity').html(data);
+                                $('#quantity').removeClass('d-none');
+                            }
+                        });
+                    });
+                }
+            });
+        });
+    </script>
 @endsection

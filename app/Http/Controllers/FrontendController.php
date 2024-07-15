@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Banner;
 use App\Models\Category;
+use App\Models\Inventory;
 use App\Models\Offer_one;
 use App\Models\Offer_two;
 use App\Models\Product;
@@ -47,14 +48,59 @@ class FrontendController extends Controller
         return back();
     }
 
-    function product_details ($slug)
+    function product_details($slug)
     {
-        $product_id = Product::where('slug',$slug)->first()->id;
+        $product_id = Product::where('slug', $slug)->first()->id;
         $product = Product::find($product_id);
-        $galleries = ProductGrallery::where('product_id',$product->id)->get();
-        return view('frontend.product_details',[
+        $galleries = ProductGrallery::where('product_id', $product->id)->get();
+        $available_colors = Inventory::where('product_id', $product->id)
+            ->groupBy('color_id')
+            ->selectRaw('sum(color_id) as sum, color_id')
+            ->get();
+        $available_sizes = Inventory::where('product_id', $product->id)
+            ->groupBy('size_id')
+            ->selectRaw('sum(size_id) as sum, size_id')
+            ->get();
+        return view('frontend.product_details', [
             'product' => $product,
             'galleries' => $galleries,
+            'available_colors' => $available_colors,
+            'available_sizes' => $available_sizes,
         ]);
+    }
+
+    function get_size(Request $request)
+    {
+        $str = '';
+        $sizes = Inventory::where([
+            'product_id' => $request->product_id,
+            'color_id' => $request->color_id,
+        ])->get();
+        foreach ($sizes as $size) {
+            if ($size->size->size_name == 'NA') {
+                $str = '<li class="color"><input checked class="size_id" id="' . $size->size_id . '" type="radio"
+                    name="size_id" value=" ' . $size->size_id . ' ">
+                    <label for="' . $size->size_id . '">' . $size->size->size_name . '</label>
+                    </li>';
+            } else {
+                $str .= '<li class="color"><input class="size_id" id="' . $size->size_id . '" type="radio"
+                    name="size_id" value=" ' . $size->size_id . ' ">
+                    <label for="' . $size->size_id . '">' . $size->size->size_name . '</label>
+                    </li>';
+            }
+        }
+        echo $str;
+    }
+
+    function get_quantity(Request $request)
+    {
+        $str = '';
+        $quantity = Inventory::where([
+            'product_id' => $request->product_id,
+            'color_id' => $request->color_id,
+            'size_id' => $request->size_id,
+        ])->first()->quantity;
+        $str = $quantity. ' In Stock';
+        echo $str;
     }
 }

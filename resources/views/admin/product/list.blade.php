@@ -19,8 +19,8 @@
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
-                        <tr>
-                            @forelse ($products as $sl=> $product)
+                        @forelse ($products as $sl=> $product)
+                            <tr>
                                 <td>{{ $sl + 1 }}</td>
                                 <td>{{ $product->product_name }}</td>
                                 <td>{{ $product->product_price }}</td>
@@ -40,9 +40,9 @@
                                         <i data-feather="trash"></i>
                                     </a>
                                 </td>
-                            @empty
-                            @endforelse
-                        </tr>
+                            </tr>
+                        @empty
+                        @endforelse
                     </table>
                 </div>
             </div>
