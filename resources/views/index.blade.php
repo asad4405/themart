@@ -138,7 +138,8 @@
                                 </div>
                                 <div class="text">
                                     <h2>
-                                        <a href="{{ route('product_details',$product->slug) }}" title="{{ $product->product_name }}">
+                                        <a href="{{ route('product_details', $product->slug) }}"
+                                            title="{{ $product->product_name }}">
                                             @if (strlen($product->product_name) > 20)
                                                 {{ substr($product->product_name, 0, 20) . '...' }}
                                             @else
@@ -603,7 +604,7 @@
                                 <div class="input-1">
                                     <input type="email" name="email" class="form-control"
                                         placeholder="Your Email..." required="">
-                                    <div class="submit clearfix">
+                                    <div class="clearfix submit">
                                         <button class="theme-btn-s2" type="submit">Subscribe</button>
                                     </div>
                                 </div>
@@ -618,6 +619,26 @@
     <!-- end of themart-cta-section -->
 @endsection
 @section('footer_script')
+    @if (session('success'))
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: "success",
+                title: "{{ session('success') }}"
+            });
+        </script>
+    @endif
+
     <script>
         if ($("#clock").length) {
             $('#clock').countdown("{{ $offer_ones->first()->date }}", function(event) {

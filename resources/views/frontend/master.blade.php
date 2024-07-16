@@ -126,7 +126,7 @@
                                     </li>
                                     <li>
                                         @auth('customer')
-                                            <a href=""><i
+                                            <a href="{{ route('customer.profile') }}"><i
                                                     class="fi flaticon-user-profile"></i><span>{{ Auth::guard('customer')->user()->fname . ' ' . Auth::guard('customer')->user()->lname }}</span>
                                             @else
                                                 <a href="{{ route('customer.login') }}"><i
@@ -472,6 +472,7 @@
     <script src="{{ asset('frontend/assets') }}/js/jquery-plugin-collection.js"></script>
     <!-- Custom script for this template -->
     <script src="{{ asset('frontend/assets') }}/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @yield('footer_script')
 </body>
 

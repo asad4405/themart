@@ -4,6 +4,7 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerAuthController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InventoryController;
@@ -103,7 +104,11 @@ Route::get('/subscribe/delete/{subscribe_id}', [HomeController::class, 'subscrib
 
 
 // Customer
-Route::get('/customer/login', [CustomerAuthController::class,'customer_login'])->name('customer.login');
-Route::get('/customer/register', [CustomerAuthController::class,'customer_register'])->name('customer.register');
-Route::post('/customer/store', [CustomerAuthController::class,'customer_store'])->name('customer.store');
-Route::post('/customer/logged', [CustomerAuthController::class,'customer_logged'])->name('customer.logged');
+Route::get('/customer/login', [CustomerAuthController::class, 'customer_login'])->name('customer.login');
+Route::get('/customer/register', [CustomerAuthController::class, 'customer_register'])->name('customer.register');
+Route::post('/customer/store', [CustomerAuthController::class, 'customer_store'])->name('customer.store');
+Route::post('/customer/logged', [CustomerAuthController::class, 'customer_logged'])->name('customer.logged');
+
+Route::get('/customer/profile', [CustomerController::class, 'customer_profile'])->name('customer.profile');
+Route::get('/customer/logout', [CustomerController::class, 'customer_logout'])->name('customer.logout');
+Route::post('/customer/profile/update', [CustomerController::class, 'customer_profile_update'])->name('customer.profile.update');
