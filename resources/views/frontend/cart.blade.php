@@ -84,7 +84,8 @@
                                                         <input class="text-value quan" type="text"
                                                             value="{{ $cart->quantity }}"
                                                             name="quantity[{{ $cart->id }}]">
-                                                        <div data-price="{{ $cart->product->after_discount }}" class="dec qtybutton">-</div>
+                                                        <div data-price="{{ $cart->product->after_discount }}"
+                                                            class="dec qtybutton">-</div>
                                                         <div data-price="{{ $cart->product->after_discount }}"
                                                             class="inc qtybutton">+</div>
                                                     </div>
@@ -130,10 +131,27 @@
                         </form>
                     </div>
                     <div class="col-lg-4 col-12">
-                        <div class="mb-4 apply-area">
-                            <input type="text" class="form-control" placeholder="Enter your coupon">
-                            <button class="theme-btn-s2" type="submit">Apply</button>
-                        </div>
+                        <form action="{{ route('cart') }}" method="GET">
+                            <div class="mb-4 apply-area">
+                                <input type="text" name="coupon" value="{{ $coupon }}" class="form-control"
+                                    placeholder="Enter your coupon">
+                                <button class="theme-btn-s2" type="submit">Apply</button>
+                            </div>
+                            @if ($messg)
+                                <div class="alert alert-danger">{{ $messg }}</div>
+                            @endif
+                        </form>
+                        @php
+                            $final_discount = 0;
+                            $total_amount = $sub_total;
+                            if ($type == 1) {
+                                $final_discount = round(($sub_total * $amount) / 100);
+                                $total_amount = $sub_total - $final_discount;
+                            } else {
+                                $final_discount = $amount;
+                                $total_amount = $sub_total - $final_discount;
+                            }
+                        @endphp
                         <div class="cart-total-wrap">
                             <h3>Cart Totals</h3>
                             <div class="sub-total">
@@ -142,11 +160,11 @@
                             </div>
                             <div class="my-3 sub-total">
                                 <h4>Discount</h4>
-                                <span>00.00</span>
+                                <span>(-) {{ $final_discount }} Taka</span>
                             </div>
                             <div class="mb-3 total">
                                 <h4>Total</h4>
-                                <span>$300.00</span>
+                                <span>{{ $total_amount }} Taka</span>
                             </div>
                             <a class="theme-btn-s2" href="checkout.html">Proceed To CheckOut</a>
                         </div>

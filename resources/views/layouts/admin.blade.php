@@ -131,29 +131,11 @@ License: You must have a valid license purchased only from above link or https:/
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#forms" role="button"
-                            aria-expanded="false" aria-controls="forms">
+                        <a class="nav-link"  href="{{ route('coupon') }}">
                             <i class="link-icon" data-feather="inbox"></i>
-                            <span class="link-title">Forms</span>
+                            <span class="link-title">Coupon</span>
                             <i class="link-arrow" data-feather="chevron-down"></i>
                         </a>
-                        <div class="collapse" id="forms">
-                            <ul class="nav sub-menu">
-                                <li class="nav-item">
-                                    <a href="pages/forms/basic-elements.html" class="nav-link">Basic Elements</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/forms/advanced-elements.html" class="nav-link">Advanced
-                                        Elements</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/forms/editors.html" class="nav-link">Editors</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/forms/wizard.html" class="nav-link">Wizard</a>
-                                </li>
-                            </ul>
-                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#charts" role="button"
@@ -322,11 +304,11 @@ License: You must have a valid license purchased only from above link or https:/
                     </div>
                 </div>
                 <div class="theme-wrapper">
-                    <h6 class="text-muted mb-2">Light Theme:</h6>
+                    <h6 class="mb-2 text-muted">Light Theme:</h6>
                     <a class="theme-item active" href="{{ asset('backend') }}/demo_1/{{ route('dashboard') }}">
                         <img src="{{ asset('backend') }}/assets/images/screenshots/light.jpg" alt="light theme">
                     </a>
-                    <h6 class="text-muted mb-2">Dark Theme:</h6>
+                    <h6 class="mb-2 text-muted">Dark Theme:</h6>
                     <a class="theme-item" href="{{ asset('backend') }}/demo_2/{{ route('dashboard') }}">
                         <img src="{{ asset('backend') }}/assets/images/screenshots/dark.jpg" alt="light theme">
                     </a>
@@ -497,7 +479,7 @@ License: You must have a valid license purchased only from above link or https:/
                             </a>
                             <div class="dropdown-menu" aria-labelledby="profileDropdown">
                                 <div class="dropdown-header d-flex flex-column align-items-center">
-                                    <div class="figure mb-3">
+                                    <div class="mb-3 figure">
                                         @if (Auth::user()->photo)
                                             <img src="{{ asset('uploads/user') }}/{{ Auth::user()->photo }}"
                                                 alt="">
@@ -505,13 +487,13 @@ License: You must have a valid license purchased only from above link or https:/
                                             <img src="{{ Avatar::create(Auth::user()->name)->toBase64() }}" />
                                         @endif
                                     </div>
-                                    <div class="info text-center">
-                                        <p class="name font-weight-bold mb-0">{{ Auth::user()->name }}</p>
-                                        <p class="email text-muted mb-3">{{ Auth::user()->email }}</p>
+                                    <div class="text-center info">
+                                        <p class="mb-0 name font-weight-bold">{{ Auth::user()->name }}</p>
+                                        <p class="mb-3 email text-muted">{{ Auth::user()->email }}</p>
                                     </div>
                                 </div>
                                 <div class="dropdown-body">
-                                    <ul class="profile-nav p-0 pt-3">
+                                    <ul class="p-0 pt-3 profile-nav">
                                         <li class="nav-item">
                                             <a href="{{ route('user.update') }}" class="nav-link">
                                                 <i data-feather="user"></i>
@@ -549,7 +531,7 @@ License: You must have a valid license purchased only from above link or https:/
                     </ol>
                 </nav>
 
-                <div class="justify-content-between align-items-center flex-wrap grid-margin">
+                <div class="flex-wrap justify-content-between align-items-center grid-margin">
                     @yield('content')
                 </div>
 
@@ -557,10 +539,10 @@ License: You must have a valid license purchased only from above link or https:/
 
             <!-- partial:partials/_footer.html -->
             <footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between">
-                <p class="text-muted text-center text-md-left">Copyright © 2021 <a href="https://www.nobleui.com"
+                <p class="text-center text-muted text-md-left">Copyright © 2021 <a href="https://www.nobleui.com"
                         target="_blank">NobleUI</a>. All rights reserved</p>
-                <p class="text-muted text-center text-md-left mb-0 d-none d-md-block">Handcrafted With <i
-                        class="mb-1 text-primary ml-1 icon-small" data-feather="heart"></i></p>
+                <p class="mb-0 text-center text-muted text-md-left d-none d-md-block">Handcrafted With <i
+                        class="mb-1 ml-1 text-primary icon-small" data-feather="heart"></i></p>
             </footer>
             <!-- partial -->
 
