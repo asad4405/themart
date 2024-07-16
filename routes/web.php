@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerAuthController;
 use App\Http\Controllers\CustomerController;
@@ -112,3 +113,9 @@ Route::post('/customer/logged', [CustomerAuthController::class, 'customer_logged
 Route::get('/customer/profile', [CustomerController::class, 'customer_profile'])->name('customer.profile');
 Route::get('/customer/logout', [CustomerController::class, 'customer_logout'])->name('customer.logout');
 Route::post('/customer/profile/update', [CustomerController::class, 'customer_profile_update'])->name('customer.profile.update');
+
+// Cart
+Route::post('/add/cart', [CartController::class, 'add_cart'])->name('add.cart');
+Route::get('/cart/remove/{cart_id}', [CartController::class, 'cart_remove'])->name('cart.remove');
+Route::get('/cart', [CartController::class, 'cart'])->name('cart');
+Route::post('/cart/update', [CartController::class, 'cart_update'])->name('cart.update');

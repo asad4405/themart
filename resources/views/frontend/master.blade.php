@@ -94,7 +94,7 @@
                     <div class="row align-items-center">
                         <div class="col-lg-2">
                             <div class="navbar-header">
-                                <a class="navbar-brand" href="index.html"><img
+                                <a class="navbar-brand" href="{{ route('index') }}"><img
                                         src="{{ asset('frontend/assets') }}/images/logo.svg" alt="logo"></a>
                             </div>
                         </div>
@@ -193,42 +193,45 @@
                                     <li>
                                         <div class="mini-cart">
                                             <button class="cart-toggle-btn"> <i class="fi flaticon-add-to-cart"></i>
-                                                <span class="cart-count">2</span></button>
+                                                <span
+                                                    class="cart-count">{{ App\Models\Cart::where('customer_id', Auth::guard('customer')->id())->count() }}</span></button>
                                             <div class="mini-cart-content">
                                                 <button class="mini-cart-close"><i class="ti-close"></i></button>
                                                 <div class="mini-cart-items">
-                                                    <div class="clearfix mini-cart-item">
-                                                        <div class="mini-cart-item-image">
-                                                            <a href="product.html"><img
-                                                                    src="{{ asset('frontend/assets') }}/images/cart/img-1.jpg"
-                                                                    alt></a>
+                                                    @php
+                                                        $sub_total = 0;
+                                                    @endphp
+                                                    @foreach (App\Models\Cart::where('customer_id', Auth::guard('customer')->id())->get() as $cart)
+                                                        <div class="clearfix mini-cart-item">
+                                                            <div class="mini-cart-item-image">
+                                                                <a
+                                                                    href="{{ route('product_details', $cart->product->slug) }}"><img
+                                                                        src="{{ asset('uploads/product') }}/{{ $cart->product->preview }}"
+                                                                        alt></a>
+                                                            </div>
+                                                            <div class="mini-cart-item-des">
+                                                                <a
+                                                                    href="{{ route('product_details', $cart->product->slug) }}">{{ $cart->product->product_name }}</a>
+                                                                <span
+                                                                    class="mini-cart-item-price">{{ $cart->product->after_discount }}
+                                                                    x {{ $cart->quantity }}</span>
+                                                                <span class="mini-cart-item-quantity"><a
+                                                                        href="{{ route('cart.remove', $cart->id) }}"><i
+                                                                            class="ti-close"></i></a></span>
+                                                            </div>
                                                         </div>
-                                                        <div class="mini-cart-item-des">
-                                                            <a href="product.html">Stylish Pink Coat</a>
-                                                            <span class="mini-cart-item-price">$150 x 1</span>
-                                                            <span class="mini-cart-item-quantity"><a href="#"><i
-                                                                        class="ti-close"></i></a></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="clearfix mini-cart-item">
-                                                        <div class="mini-cart-item-image">
-                                                            <a href="product.html"><img
-                                                                    src="{{ asset('frontend/assets') }}/images/cart/img-2.jpg"
-                                                                    alt></a>
-                                                        </div>
-                                                        <div class="mini-cart-item-des">
-                                                            <a href="product.html">Blue Bag</a>
-                                                            <span class="mini-cart-item-price">$120 x 2</span>
-                                                            <span class="mini-cart-item-quantity"><a href="#"><i
-                                                                        class="ti-close"></i></a></span>
-                                                        </div>
-                                                    </div>
+                                                        @php
+                                                            $sub_total +=
+                                                                $cart->product->after_discount * $cart->quantity;
+                                                        @endphp
+                                                    @endforeach
                                                 </div>
                                                 <div class="clearfix mini-cart-action">
                                                     <span class="mini-checkout-price">Subtotal:
-                                                        <span>$390</span></span>
+                                                        <span>{{ $sub_total }} Taka</span></span>
                                                     <div class="mini-btn">
-                                                        <a href="cart.html" class="view-cart-btn">View Cart</a>
+                                                        <a href="{{ route('cart') }}" class="view-cart-btn">View
+                                                            Cart</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -257,7 +260,7 @@
                             </div>
                             <div class="col-lg-1 col-md-6 col-sm-5 col-6 d-block d-lg-none">
                                 <div class="navbar-header">
-                                    <a class="navbar-brand" href="index.html"><img
+                                    <a class="navbar-brand" href="{{ route('index') }}"><img
                                             src="{{ asset('frontend/assets') }}/images/logo.svg" alt="logo"></a>
                                 </div>
                             </div>
@@ -419,7 +422,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col col-xs-12">
-                            <p class="copyright"> Copyright &copy; 2023 Themart by <a href="index.html">wpOceans</a>.
+                            <p class="copyright"> Copyright &copy; 2023 Themart by <a href="{{ route('index') }}">wpOceans</a>.
                                 All
                                 Rights Reserved.</p>
                         </div>
