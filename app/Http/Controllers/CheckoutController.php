@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\InvoiceMail;
 use App\Models\Billing;
 use App\Models\Cart;
 use App\Models\City;
@@ -13,6 +14,7 @@ use App\Models\Shipping;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class CheckoutController extends Controller
 {
@@ -119,18 +121,19 @@ class CheckoutController extends Controller
                 ]);
 
                 //  remove cart
-                Cart::find($cart->id)->delete();
+                // Cart::find($cart->id)->delete();
 
                 // decreament quantity with inventory
                 Inventory::where('product_id', $cart->product_id)->where('color_id', $cart->color_id)->where('size_id', $cart->size_id)->decrement('quantity', $cart->quantity);
             }
 
-            return redirect()->route('order.success')->with('success', $order_id);
+            Mail::to($request->email)->send(new InvoiceMail($order_id));
 
+            return redirect()->route('order.success')->with('success', $order_id);
         } elseif ($request->payment_method == 2) {
-            //
+            // SSL
         } elseif ($request->payment_method == 3) {
-            //
+            // Stripe
         }
     }
 
