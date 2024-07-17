@@ -135,6 +135,7 @@
                             <div class="mb-4 apply-area">
                                 <input type="text" name="coupon" value="{{ $coupon }}" class="form-control"
                                     placeholder="Enter your coupon">
+                                    {{ session(['S_coupon' => $coupon]) }}
                                 <button class="theme-btn-s2" type="submit">Apply</button>
                             </div>
                             @if ($messg)
@@ -157,16 +158,19 @@
                             <div class="sub-total">
                                 <h4>Subtotal</h4>
                                 <span>{{ $sub_total }} Taka</span>
+                                {{ session(['S_sub_total' => $sub_total]) }}
                             </div>
                             <div class="my-3 sub-total">
                                 <h4>Discount</h4>
                                 <span>(-) {{ $final_discount }} Taka</span>
+                                {{ session(['S_discount' => $final_discount]) }}
                             </div>
                             <div class="mb-3 total">
                                 <h4>Total</h4>
                                 <span>{{ $total_amount }} Taka</span>
+                                {{ session(['S_total_amount' => $total_amount]) }}
                             </div>
-                            <a class="theme-btn-s2" href="checkout.html">Proceed To CheckOut</a>
+                            <a class="theme-btn-s2" href="{{ route('checkout') }}">Proceed To CheckOut</a>
                         </div>
                     </div>
                 </div>

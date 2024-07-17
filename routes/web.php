@@ -4,6 +4,7 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\CustomerAuthController;
 use App\Http\Controllers\CustomerController;
@@ -126,3 +127,18 @@ Route::get('/coupon', [CouponController::class, 'coupon'])->name('coupon');
 Route::post('/coupon/store', [CouponController::class, 'coupon_store'])->name('coupon.store');
 Route::get('/coupon/status/{coupon_id}', [CouponController::class, 'coupon_status'])->name('coupon.status');
 Route::get('/coupon/delete/{coupon_id}', [CouponController::class, 'coupon_delete'])->name('coupon.delete');
+
+// Checkout
+Route::get('checkout',[CheckoutController::class, 'checkout'])->name('checkout');
+
+Route::post('/getcity',[CheckoutController::class, 'getcity']);
+
+Route::post('/order/store',[CheckoutController::class, 'order_store'])->name('order.store');
+Route::get('/order/success',[CheckoutController::class, 'order_success'])->name('order.success');
+
+
+
+
+
+
+

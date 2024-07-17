@@ -22,6 +22,7 @@
     <link href="{{ asset('frontend/assets') }}/css/owl.transitions.css" rel="stylesheet">
     <link href="{{ asset('frontend/assets') }}/css/jquery.fancybox.css" rel="stylesheet">
     <link href="{{ asset('frontend/assets') }}/css/odometer-theme-default.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link href="{{ asset('frontend/assets') }}/sass/style.css" rel="stylesheet">
 </head>
 
@@ -422,7 +423,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col col-xs-12">
-                            <p class="copyright"> Copyright &copy; 2023 Themart by <a href="{{ route('index') }}">wpOceans</a>.
+                            <p class="copyright"> Copyright &copy; 2023 Themart by <a
+                                    href="{{ route('index') }}">wpOceans</a>.
                                 All
                                 Rights Reserved.</p>
                         </div>
@@ -476,6 +478,7 @@
     <!-- Custom script for this template -->
     <script src="{{ asset('frontend/assets') }}/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     @yield('footer_script')
 </body>
 
