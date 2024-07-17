@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class CustomerController extends Controller
 {
@@ -89,5 +91,18 @@ class CustomerController extends Controller
                 return back();
             }
         }
+    }
+
+    function my_orders()
+    {
+        $my_orders = Order::where('customer_id', Auth::guard('customer')->id())->latest()->get();
+        return view('frontend.customer.my_orders', compact('my_orders'));
+    }
+
+    function download_invoice($id)
+    {
+        $order_id  = Order::find($id)->order_id;
+        $pdf = Pdf::loadView('frontend.customer.pdf.order_invoice', compact('order_id'));
+        return $pdf->download('invoice.pdf');
     }
 }
