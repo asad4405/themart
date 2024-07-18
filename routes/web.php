@@ -12,6 +12,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\OfferController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubCategoryController;
@@ -116,8 +117,8 @@ Route::get('/customer/profile', [CustomerController::class, 'customer_profile'])
 Route::get('/customer/logout', [CustomerController::class, 'customer_logout'])->name('customer.logout');
 Route::post('/customer/profile/update', [CustomerController::class, 'customer_profile_update'])->name('customer.profile.update');
 
-Route::get('/customer/my/orders',[CustomerController::class,'my_orders'])->name('my.orders');
-Route::get('/download.invoice/{id}',[CustomerController::class, 'download_invoice'])->name('download.invoice');
+Route::get('/customer/my/orders', [CustomerController::class, 'my_orders'])->name('my.orders');
+Route::get('/download.invoice/{id}', [CustomerController::class, 'download_invoice'])->name('download.invoice');
 
 // Cart
 Route::post('/add/cart', [CartController::class, 'add_cart'])->name('add.cart');
@@ -132,16 +133,18 @@ Route::get('/coupon/status/{coupon_id}', [CouponController::class, 'coupon_statu
 Route::get('/coupon/delete/{coupon_id}', [CouponController::class, 'coupon_delete'])->name('coupon.delete');
 
 // Checkout
-Route::get('checkout',[CheckoutController::class, 'checkout'])->name('checkout');
+Route::get('checkout', [CheckoutController::class, 'checkout'])->name('checkout');
 
-Route::post('/getcity',[CheckoutController::class, 'getcity']);
+Route::post('/getcity', [CheckoutController::class, 'getcity']);
 
-Route::post('/order/store',[CheckoutController::class, 'order_store'])->name('order.store');
-Route::get('/order/success',[CheckoutController::class, 'order_success'])->name('order.success');
+Route::post('/order/store', [CheckoutController::class, 'order_store'])->name('order.store');
+Route::get('/order/success', [CheckoutController::class, 'order_success'])->name('order.success');
 
-
-
-
-
-
-
+// Orders
+Route::get('/orders', [OrderController::class, 'orders'])->name('orders');
+Route::post('/order/status/update/{id}', [OrderController::class, 'order_status_update'])->name('order.status.update');
+Route::get('/cancel/order/{id}', [OrderController::class, 'cancel_order'])->name('cancel.order');
+Route::post('/cancel/order/request/{id}', [OrderController::class, 'cancel_order_request'])->name('cancel.order.request');
+Route::get('/order/cancel/list', [OrderController::class, 'order_cancel_list'])->name('order.cancel.list');
+Route::get('/order/cancel/details/{id}', [OrderController::class, 'order_cancel_details'])->name('order.cancel.details');
+Route::get('/order/cancel/accept/{id}', [OrderController::class, 'order_cancel_accept'])->name('order.cancel.accept');

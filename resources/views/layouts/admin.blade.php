@@ -131,38 +131,26 @@ License: You must have a valid license purchased only from above link or https:/
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"  href="{{ route('coupon') }}">
+                        <a class="nav-link" href="{{ route('coupon') }}">
                             <i class="link-icon" data-feather="inbox"></i>
                             <span class="link-title">Coupon</span>
                             <i class="link-arrow" data-feather="chevron-down"></i>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#charts" role="button"
-                            aria-expanded="false" aria-controls="charts">
+                        <a class="nav-link" data-toggle="collapse" href="#orders" role="button"
+                            aria-expanded="false" aria-controls="orders">
                             <i class="link-icon" data-feather="pie-chart"></i>
-                            <span class="link-title">Charts</span>
+                            <span class="link-title">Orders</span>
                             <i class="link-arrow" data-feather="chevron-down"></i>
                         </a>
-                        <div class="collapse" id="charts">
+                        <div class="collapse" id="orders">
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
-                                    <a href="pages/charts/apex.html" class="nav-link">Apex</a>
+                                    <a href="{{ route('orders') }}" class="nav-link">Orders</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/charts/chartjs.html" class="nav-link">ChartJs</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/charts/flot.html" class="nav-link">Flot</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/charts/morrisjs.html" class="nav-link">Morris</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/charts/peity.html" class="nav-link">Peity</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/charts/sparkline.html" class="nav-link">Sparkline</a>
+                                    <a href="{{ route('order.cancel.list') }}" class="nav-link">Cancel Orders List</a>
                                 </li>
                             </ul>
                         </div>
@@ -417,54 +405,23 @@ License: You must have a valid license purchased only from above link or https:/
                                     <a href="javascript:;" class="text-muted">Clear all</a>
                                 </div>
                                 <div class="dropdown-body">
-                                    <a href="javascript:;" class="dropdown-item">
-                                        <div class="icon">
-                                            <i data-feather="user-plus"></i>
-                                        </div>
-                                        <div class="content">
-                                            <p>New customer registered</p>
-                                            <p class="sub-text text-muted">2 sec ago</p>
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;" class="dropdown-item">
-                                        <div class="icon">
-                                            <i data-feather="gift"></i>
-                                        </div>
-                                        <div class="content">
-                                            <p>New Order Recieved</p>
-                                            <p class="sub-text text-muted">30 min ago</p>
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;" class="dropdown-item">
-                                        <div class="icon">
-                                            <i data-feather="alert-circle"></i>
-                                        </div>
-                                        <div class="content">
-                                            <p>Server Limit Reached!</p>
-                                            <p class="sub-text text-muted">1 hrs ago</p>
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;" class="dropdown-item">
-                                        <div class="icon">
-                                            <i data-feather="layers"></i>
-                                        </div>
-                                        <div class="content">
-                                            <p>Apps are ready for update</p>
-                                            <p class="sub-text text-muted">5 hrs ago</p>
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;" class="dropdown-item">
-                                        <div class="icon">
-                                            <i data-feather="download"></i>
-                                        </div>
-                                        <div class="content">
-                                            <p>Download completed</p>
-                                            <p class="sub-text text-muted">6 hrs ago</p>
-                                        </div>
-                                    </a>
+                                    @foreach (App\Models\OrderCancel::all() as $order_cancel)
+                                        <a href="" class="dropdown-item">
+                                            <div class="icon">
+                                                <i data-feather="user-plus"></i>
+                                            </div>
+                                            <div class="content">
+                                                <p>Order Cancel Request</p>
+                                                <p>Order ID
+                                                    {{ App\Models\Order::find($order_cancel->order_id)->order_id }}</p>
+                                                <p class="sub-text text-muted">
+                                                    {{ $order_cancel->created_at->diffForHumans() }}</p>
+                                            </div>
+                                        </a>
+                                    @endforeach
                                 </div>
                                 <div class="dropdown-footer d-flex align-items-center justify-content-center">
-                                    <a href="javascript:;">View all</a>
+                                    <a href="">View all</a>
                                 </div>
                             </div>
                         </li>
