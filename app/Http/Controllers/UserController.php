@@ -29,7 +29,7 @@ class UserController extends Controller
 
     public function password_update(UserRequest $request)
     {
-        return $user = User::find(Auth::id());
+        $user = User::find(Auth::id());
 
         if (Hash::check($request->current_password, $user->password)) {
             $user->update([

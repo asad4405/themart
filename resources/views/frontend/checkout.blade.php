@@ -102,7 +102,7 @@
                                             <div class="contact-form form-style">
                                                 <div class="row">
                                                     <div class="col-lg-6 col-md-12 col-12">
-                                                        <input type="text" placeholder="First Name*" id="fname6"
+                                                        <input type="text" placeholder="First Name*" id=""
                                                             name="ship_fname">
                                                     </div>
                                                     <div class="col-lg-6 col-md-12 col-12">
@@ -245,6 +245,7 @@
                                                     value="{{ session('S_sub_total') }}">
                                                 <input type="hidden" name="total"
                                                     value="{{ session('S_total_amount') }}">
+                                                <input type="hidden" name="customer_id" value="{{ Auth::guard('customer')->id() }}">
                                                 <div id="open6" class="payment-name active">
                                                     <div class="contact-form form-style">
                                                         <div class="row">

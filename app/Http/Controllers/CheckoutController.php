@@ -7,6 +7,7 @@ use App\Models\Billing;
 use App\Models\Cart;
 use App\Models\City;
 use App\Models\Country;
+use App\Models\Coupon;
 use App\Models\Inventory;
 use App\Models\Order;
 use App\Models\OrderProduct;
@@ -42,6 +43,7 @@ class CheckoutController extends Controller
     function order_store(Request $request)
     {
         if ($request->payment_method == 1) {
+
             $order_id = '#' . random_int(100000, 900000) . '-' . uniqid();
 
             Order::insert([
@@ -121,17 +123,23 @@ class CheckoutController extends Controller
                 ]);
 
                 //  remove cart
-                // Cart::find($cart->id)->delete();
+                Cart::find($cart->id)->delete();
 
                 // decreament quantity with inventory
                 Inventory::where('product_id', $cart->product_id)->where('color_id', $cart->color_id)->where('size_id', $cart->size_id)->decrement('quantity', $cart->quantity);
+            }
+
+            // decrement coupon limit
+            if (Coupon::where('coupon', $request->coupon)->exists()) {
+                Coupon::where('coupon', $request->coupon)->decrement('limit');
             }
 
             Mail::to($request->email)->send(new InvoiceMail($order_id));
 
             return redirect()->route('order.success')->with('success', $order_id);
         } elseif ($request->payment_method == 2) {
-            // SSL
+            $data = $request->all();
+            return redirect()->route('sslpay')->with('data',$data);
         } elseif ($request->payment_method == 3) {
             // Stripe
         }

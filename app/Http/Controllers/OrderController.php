@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Inventory;
 use App\Models\Order;
 use App\Models\OrderCancel;
+use App\Models\OrderProduct;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
@@ -74,6 +76,14 @@ class OrderController extends Controller
         Order::find($details->order_id)->update([
             'status' => 5,
         ]);
+        $order_id = Order::find($details->order_id);
+        foreach(OrderProduct::where('order_id',$order_id->order_id)->get() as $order_product){
+            Inventory::where([
+                'product_id'=> $order_product->product_id,
+                'color_id' => $order_product->color_id,
+                'size_id' => $order_product->size_id,
+            ])->increment('quantity', $order_product->quantity);
+        }
         OrderCancel::find($id)->delete();
         return back();
     }
