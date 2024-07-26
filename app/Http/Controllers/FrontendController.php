@@ -7,11 +7,13 @@ use App\Models\Category;
 use App\Models\Inventory;
 use App\Models\Offer_one;
 use App\Models\Offer_two;
+use App\Models\OrderProduct;
 use App\Models\Product;
 use App\Models\ProductGrallery;
 use App\Models\Subscribe;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FrontendController extends Controller
 {
@@ -61,11 +63,13 @@ class FrontendController extends Controller
             ->groupBy('size_id')
             ->selectRaw('sum(size_id) as sum, size_id')
             ->get();
+            $reviews = OrderProduct::where('product_id',$product->id)->whereNotNull('review')->get();
         return view('frontend.product_details', [
             'product' => $product,
             'galleries' => $galleries,
             'available_colors' => $available_colors,
             'available_sizes' => $available_sizes,
+            'reviews' => $reviews,
         ]);
     }
 
@@ -100,7 +104,26 @@ class FrontendController extends Controller
             'color_id' => $request->color_id,
             'size_id' => $request->size_id,
         ])->first()->quantity;
-        $str = $quantity. ' In Stock';
+        $str = $quantity . ' In Stock';
         echo $str;
+    }
+
+    function review_store(Request $request, $product_id)
+    {
+        $request->validate([
+            'review' => 'required',
+            'stars' => 'required',
+        ]);
+
+        OrderProduct::where([
+            'customer_id' => Auth::guard('customer')->id(),
+            'product_id' => $product_id,
+        ])->first()->update([
+            'review' => $request->review,
+            'star' => $request->stars,
+            'updated_at' => Carbon::now(),
+        ]);
+
+        return back()->with('review', 'Review Submitted Successfully!');
     }
 }

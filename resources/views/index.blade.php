@@ -148,12 +148,20 @@
                                         </a>
                                     </h2>
                                     <div class="rating-product">
-                                        <i class="fi flaticon-star"></i>
-                                        <i class="fi flaticon-star"></i>
-                                        <i class="fi flaticon-star"></i>
-                                        <i class="fi flaticon-star"></i>
-                                        <i class="fi flaticon-star"></i>
-                                        <span>130</span>
+                                        @php
+                                            $reviews = App\Models\OrderProduct::where('product_id', $product->id)->whereNotNull('review')->get();
+                                        @endphp
+                                        @if ($reviews->count())
+                                            @for ($i = 1; $i <= $reviews->average('star'); $i++)
+                                                <i class="fi flaticon-star"></i>
+                                            @endfor
+                                            @for ($i = 1; $i <= 5 - $reviews->average('star'); $i++)
+                                                <i class="fa fa-star-o"></i>
+                                            @endfor
+                                            <span>{{ $reviews->count() }}</span>
+                                        @else
+                                            <p>No reviews</p>
+                                        @endif
                                     </div>
                                     <div class="price">
                                         <span class="present-price">{{ $product->after_discount }} Taka</span>

@@ -18,6 +18,8 @@ class CustomerMiddleware
     {
         if(!Auth::guard('customer')){
             return redirect()->route('customer.login');
+        }else{
+            return redirect()->route('customer.login');
         }
         return $next($request);
     }

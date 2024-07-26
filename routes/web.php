@@ -123,10 +123,10 @@ Route::get('/customer/my/orders', [CustomerController::class, 'my_orders'])->nam
 Route::get('/download.invoice/{id}', [CustomerController::class, 'download_invoice'])->name('download.invoice');
 
 // Cart
-Route::post('/add/cart', [CartController::class, 'add_cart'])->name('add.cart');
-Route::get('/cart/remove/{cart_id}', [CartController::class, 'cart_remove'])->name('cart.remove');
-Route::get('/cart', [CartController::class, 'cart'])->name('cart');
-Route::post('/cart/update', [CartController::class, 'cart_update'])->name('cart.update');
+Route::post('/add/cart', [CartController::class, 'add_cart'])->name('add.cart')->middleware('customer.verified');
+Route::get('/cart/remove/{cart_id}', [CartController::class, 'cart_remove'])->name('cart.remove')->middleware('customer.verified');
+Route::get('/cart', [CartController::class, 'cart'])->name('cart')->middleware('customer.verified');
+Route::post('/cart/update', [CartController::class, 'cart_update'])->name('cart.update')->middleware('customer.verified');
 
 // Coupon
 Route::get('/coupon', [CouponController::class, 'coupon'])->name('coupon');
@@ -169,3 +169,6 @@ Route::controller(StripePaymentController::class)->group(function () {
 });
 
 // Stripe End
+
+// Product Review
+Route::post('/review/store/{product_id}',[FrontendController::class,'review_store'])->name('review.store');
