@@ -139,9 +139,10 @@ class CheckoutController extends Controller
             return redirect()->route('order.success')->with('success', $order_id);
         } elseif ($request->payment_method == 2) {
             $data = $request->all();
-            return redirect()->route('sslpay')->with('data',$data);
+            return redirect()->route('sslpay')->with('data', $data);
         } elseif ($request->payment_method == 3) {
-            // Stripe
+            $data = $request->all();
+            return redirect()->route('stripe')->with('data', $data);
         }
     }
 
