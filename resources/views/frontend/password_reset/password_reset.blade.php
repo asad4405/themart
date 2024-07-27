@@ -2,7 +2,7 @@
 <html lang="en">
 
 
-<!-- Mirrored from wpocean.com/html/tf/themart/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 Jun 2023 08:56:28 GMT -->
+<!-- Mirrored from wpocean.com/html/tf/themart/forgot.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 Jun 2023 08:56:45 GMT -->
 
 <head>
     <meta charset="utf-8">
@@ -32,7 +32,7 @@
     <!-- start page-wrapper -->
     <div class="page-wrapper">
         <!-- start preloader -->
-        {{-- <div class="preloader">
+        <div class="preloader">
             <div class="vertical-centered-box">
                 <div class="content">
                     <div class="loader-circle"></div>
@@ -42,20 +42,21 @@
                     <img src="{{ asset('frontend/assets') }}/images/preloader.png" alt="">
                 </div>
             </div>
-        </div> --}}
+        </div>
         <!-- end preloader -->
 
-        <div class="wpo-login-area">
+        <!-- login-area start -->
+        <div class="tp-login-area">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <form class="wpo-accountWrapper" action="{{ route('customer.logged') }}" method="POST">
+                        <form class="tp-accountWrapper" action="{{ route('password.reset.request') }}" method="POST">
                             @csrf
-                            <div class="wpo-accountInfo">
-                                <div class="wpo-accountInfoHeader">
-                                    <a href="{{ route('customer.login') }}"><img
-                                            src="{{ asset('frontend/assets') }}/images/logo-2.svg" alt=""></a>
-                                    <a class="wpo-accountBtn" href="{{ route('customer.register') }}">
+                            <div class="tp-accountInfo">
+                                <div class="tp-accountInfoHeader">
+                                    <a href="{{ route('index') }}"><img
+                                            src="{{ asset('frontend/assets') }}/images/logo-2.svg" alt=""> </a>
+                                    <a class="tp-accountBtn" href="{{ route('customer.register') }}">
                                         <span class="">Create Account</span>
                                     </a>
                                 </div>
@@ -63,67 +64,36 @@
                                     <img src="{{ asset('frontend/assets') }}/images/login.svg" alt="">
                                 </div>
                                 <div class="back-home">
-                                    <a class="wpo-accountBtn" href="{{ route('index') }}">
+                                    <a class="tp-accountBtn" href="{{ route('index') }}">
                                         <span class="">Back To Home</span>
                                     </a>
                                 </div>
                             </div>
-                            <div class="wpo-accountForm form-style">
+                            <div class="tp-accountForm form-style">
                                 <div class="fromTitle">
-                                    <h2>Login</h2>
+                                    <h2>Reset Password</h2>
                                     <p>Sign into your pages account</p>
                                 </div>
-                                @if (session('reset'))
-                                    <div class="alert alert-success">{{ session('reset') }}</div>
+                                @if (session('sent'))
+                                    <div class="alert alert-success">{{ session('sent') }}</div>
                                 @endif
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-12">
                                         <label>Email</label>
-                                        <input type="text" id="email" name="email">
+                                        <input type="text" id="email" name="email"
+                                            value="{{ old('email') }}">
                                         @error('email')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
-                                        @error('exists')
-                                            <span class="text-danger">{{ $exists }}</span>
-                                        @enderror
+                                        @if (session('exists'))
+                                            <span class="text-danger">{{ session('exists') }}</span>
+                                        @endif
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-12">
-                                        <div class="form-group">
-                                            <label>Password</label>
-                                            <input class="pwd6" type="password" placeholder="" name="password">
-                                            <span class="input-group-btn">
-                                                <button class="btn btn-default reveal6" type="button"><i
-                                                        class="ti-eye"></i></button>
-                                            </span>
-                                            @error('password')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                            @error('wrong')
-                                                <span class="text-danger">{{ $wrong }}</span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 col-md-12 col-12">
-                                        <div class="check-box-wrap">
-
-                                            <div class="forget-btn">
-                                                <a href="{{ route('forgot.password') }}">Forgot Password?</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 col-md-12 col-12">
-                                        <button type="submit" class="wpo-accountBtn">Login</button>
+                                        <button type="submit" class="tp-accountBtn">Resend Password</button>
                                     </div>
                                 </div>
-                                <h4 class="or"><span>OR</span></h4>
-                                <ul class="wpo-socialLoginBtn">
-                                    <li><button class="bg-danger" tabindex="0" type="button"><span><i
-                                                    class="ti-google"></i></span></button></li>
-                                    <li>
-                                        <button class="bg-secondary" tabindex="0" type="button"><span><i
-                                                    class="ti-github"></i></span></button>
-                                    </li>
-                                </ul>
+
                                 <p class="subText">Don't have an account? <a
                                         href="{{ route('customer.register') }}">Create free
                                         account</a></p>
@@ -133,6 +103,7 @@
                 </div>
             </div>
         </div>
+        <!-- login-area end -->
 
 
     </div>
@@ -140,7 +111,7 @@
 
     <!-- All JavaScript files
     ================================================== -->
-    <script src="{{ asset('frontend/assets') }}'/js/jquery.min.js"></script>
+    <script src="{{ asset('frontend/assets') }}/js/jquery.min.js"></script>
     <script src="{{ asset('frontend/assets') }}/js/bootstrap.bundle.min.js"></script>
     <!-- Plugins for this template -->
     <script src="{{ asset('frontend/assets') }}/js/modernizr.custom.js"></script>
@@ -151,6 +122,6 @@
 </body>
 
 
-<!-- Mirrored from wpocean.com/html/tf/themart/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 Jun 2023 08:56:29 GMT -->
+<!-- Mirrored from wpocean.com/html/tf/themart/forgot.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 Jun 2023 08:56:45 GMT -->
 
 </html>

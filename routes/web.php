@@ -13,6 +13,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
@@ -185,6 +186,11 @@ Route::get('delete/role/{role_id}', [RoleController::class, 'delete_role'])->nam
 Route::post('assign/role', [RoleController::class, 'assign_role'])->name('assign.role');
 Route::get('remove/role/{id}', [RoleController::class, 'remove_role'])->name('remove.role');
 
+// Forget password Customer
+Route::get('/forgot/password',[PasswordResetController::class,'forgot_password'])->name('forgot.password');
+Route::post('/password/reset/request',[PasswordResetController::class, 'password_reset_request'])->name('password.reset.request');
+Route::get('/password/reset/form/{token}',[PasswordResetController::class, 'password_reset_form'])->name('password.reset.form');
+Route::post('/password/reset/confirm/{token}',[PasswordResetController::class, 'password_reset_confirm'])->name('password.reset.confirm');
 
 
 
