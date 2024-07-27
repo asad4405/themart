@@ -15,6 +15,7 @@ use App\Http\Controllers\OfferController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\SubCategoryController;
@@ -171,4 +172,28 @@ Route::controller(StripePaymentController::class)->group(function () {
 // Stripe End
 
 // Product Review
-Route::post('/review/store/{product_id}',[FrontendController::class,'review_store'])->name('review.store');
+Route::post('/review/store/{product_id}', [FrontendController::class, 'review_store'])->name('review.store');
+
+
+// Role Manager
+Route::get('role/manager', [RoleController::class, 'role_manage'])->name('role.manage');
+Route::post('permission/store', [RoleController::class, 'permission_store'])->name('permission.store');
+Route::post('role/store', [RoleController::class, 'role_store'])->name('role.store');
+Route::get('edit/role/{role_id}', [RoleController::class, 'edit_role'])->name('edit.role');
+Route::post('update/role/{role_id}', [RoleController::class, 'update_role'])->name('update.role');
+Route::get('delete/role/{role_id}', [RoleController::class, 'delete_role'])->name('delete.role');
+Route::post('assign/role', [RoleController::class, 'assign_role'])->name('assign.role');
+Route::get('remove/role/{id}', [RoleController::class, 'remove_role'])->name('remove.role');
+
+
+
+
+
+
+
+
+
+
+
+
+

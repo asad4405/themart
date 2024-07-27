@@ -150,25 +150,23 @@ License: You must have a valid license purchased only from above link or https:/
                                     <a href="{{ route('orders') }}" class="nav-link">Orders</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('order.cancel.list') }}" class="nav-link">Cancel Orders List</a>
+                                    <a href="{{ route('order.cancel.list') }}" class="nav-link">Cancel Orders
+                                        List</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#tables" role="button"
-                            aria-expanded="false" aria-controls="tables">
+                        <a class="nav-link" data-toggle="collapse" href="#role" role="button"
+                            aria-expanded="false" aria-controls="role">
                             <i class="link-icon" data-feather="layout"></i>
-                            <span class="link-title">Table</span>
+                            <span class="link-title">Role Manager</span>
                             <i class="link-arrow" data-feather="chevron-down"></i>
                         </a>
-                        <div class="collapse" id="tables">
+                        <div class="collapse" id="role">
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
-                                    <a href="pages/tables/basic-table.html" class="nav-link">Basic Tables</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/tables/data-table.html" class="nav-link">Data Table</a>
+                                    <a href="{{ route('role.manage') }}" class="nav-link">Role</a>
                                 </li>
                             </ul>
                         </div>
