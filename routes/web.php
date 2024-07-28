@@ -123,6 +123,10 @@ Route::post('/customer/profile/update', [CustomerController::class, 'customer_pr
 
 Route::get('/customer/my/orders', [CustomerController::class, 'my_orders'])->name('my.orders');
 Route::get('/download.invoice/{id}', [CustomerController::class, 'download_invoice'])->name('download.invoice');
+// customer email verify
+Route::get('/customer/email/verify/{token}',[CustomerController::class, 'customer_email_verify'])->name('customer.email.verify');
+Route::get('/resend/email/verify',[CustomerController::class, 'resend_email_verify'])->name('resend.email.verify');
+Route::post('/resend/link/send',[CustomerController::class, 'resend_link_send'])->name('resend.link.send');
 
 // Cart
 Route::post('/add/cart', [CartController::class, 'add_cart'])->name('add.cart')->middleware('customer.verified');

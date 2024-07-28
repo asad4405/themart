@@ -76,6 +76,15 @@
                                 @if (session('reset'))
                                     <div class="alert alert-success">{{ session('reset') }}</div>
                                 @endif
+                                @if (session('verify_email'))
+                                    <div class="alert alert-success">{{ session('verify_email') }}</div>
+                                @endif
+                                @if (session('verify'))
+                                    <div class="alert alert-success">
+                                        <span>{{ session('verify') }}</span>
+                                        <a href="{{ route('resend.email.verify') }}">Resend Verification Link</a>
+                                    </div>
+                                @endif
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-12">
                                         <label>Email</label>

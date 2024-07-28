@@ -50,7 +50,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <form class="tp-accountWrapper" action="{{ route('password.reset.request') }}" method="POST">
+                        <form class="tp-accountWrapper" action="{{ route('resend.link.send') }}" method="POST">
                             @csrf
                             <div class="tp-accountInfo">
                                 <div class="tp-accountInfoHeader">
@@ -71,11 +71,11 @@
                             </div>
                             <div class="tp-accountForm form-style">
                                 <div class="fromTitle">
-                                    <h2>Reset Password</h2>
+                                    <h2>Resend Email Verification Link</h2>
                                     <p>Sign into your pages account</p>
                                 </div>
-                                @if (session('sent'))
-                                    <div class="alert alert-success">{{ session('sent') }}</div>
+                                @if (session('customer_success'))
+                                    <div class="alert alert-success">{{ session('customer_success') }}</div>
                                 @endif
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-12">
@@ -90,7 +90,7 @@
                                         @endif
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-12">
-                                        <button type="submit" class="tp-accountBtn">Reset Password</button>
+                                        <button type="submit" class="tp-accountBtn">Resend</button>
                                     </div>
                                 </div>
 

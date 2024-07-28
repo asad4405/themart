@@ -42,21 +42,25 @@ class PasswordResetController extends Controller
 
     function password_reset_form($token)
     {
-        return view('frontend.password_reset.pass_reset_form', [
-            'token' => $token,
-        ]);
+        if (Passreset::where('token', $token)->exists()) {
+            return view('frontend.password_reset.pass_reset_form', [
+                'token' => $token,
+            ]);
+        } else {
+            abort('404');
+        }
     }
 
     function password_reset_confirm(Request $request, $token)
     {
-        $pass_reset = Passreset::where('token',$token)->first();
-        if(Passreset::where('token',$token)->exists()){
+        $pass_reset = Passreset::where('token', $token)->first();
+        if (Passreset::where('token', $token)->exists()) {
             Customer::find($pass_reset->customer_id)->update([
                 'password' => Hash::make($request->password),
             ]);
             Passreset::where('token', $token)->delete();
-            return redirect()->route('customer.login')->with('reset','Password Reset Successfull!');
-        }else{
+            return redirect()->route('customer.login')->with('reset', 'Password Reset Successfull!');
+        } else {
             abort('404');
         }
     }
