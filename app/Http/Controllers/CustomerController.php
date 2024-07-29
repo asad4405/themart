@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Notification;
 
 class CustomerController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('customer.verified');
+    }
+
     function customer_profile()
     {
         return view('frontend.customer.profile');

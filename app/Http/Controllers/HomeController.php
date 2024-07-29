@@ -18,7 +18,7 @@ class HomeController extends Controller
 
     function user_list()
     {
-        $users = User::where('id','!=', Auth::id())->get();
+        $users = User::where('id','!=', Auth::id())->paginate(5);
         return view('admin.user.user_list',compact('users'));
     }
 

@@ -22,13 +22,13 @@
 
                             @foreach ($users as $sl => $user)
                                 <tr>
-                                    <td>{{ $sl + 1 }}</td>
+                                    <td>{{ $users->firstitem()+$sl}}</td>
                                     <td>
-                                        @if (Auth()->user()->photo == null)
-                                            <img src="{{ Avatar::create($user->name)->toBase64() }}" />
-                                        @else
+                                        @if (Auth::user()->photo == null)
                                             <img src="{{ asset('uploads/user') }}/{{ $user->photo }}" alt=""
                                                 width="50">
+                                        @else
+                                            <img src="{{ Avatar::create($user->name)->toBase64() }}" />
                                         @endif
                                     </td>
                                     <td>{{ $user->name }}</td>
@@ -42,8 +42,10 @@
                                     </td>
                                 </tr>
                             @endforeach
-
                         </table>
+                        <div class="mt-4">
+                            {{ $users->links('vendor.pagination.simple-bootstrap-5') }}
+                        </div>
                     </div>
                 </div>
             </div>
