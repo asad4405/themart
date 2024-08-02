@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Banner;
 use App\Models\Category;
+use App\Models\Color;
 use App\Models\Inventory;
 use App\Models\Offer_one;
 use App\Models\Offer_two;
 use App\Models\OrderProduct;
 use App\Models\Product;
 use App\Models\ProductGrallery;
+use App\Models\Size;
 use App\Models\Subscribe;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -26,7 +28,7 @@ class FrontendController extends Controller
         $products = Product::latest()->take(8)->get();
         $trending_products = Product::all();
         $recent_products = Product::latest()->take(3)->get();
-        return view('index', [
+        return view('frontend.index', [
             'banners' => $banners,
             'categories' => $categories,
             'offer_ones' => $offer_ones,
@@ -63,7 +65,7 @@ class FrontendController extends Controller
             ->groupBy('size_id')
             ->selectRaw('sum(size_id) as sum, size_id')
             ->get();
-            $reviews = OrderProduct::where('product_id',$product->id)->whereNotNull('review')->get();
+        $reviews = OrderProduct::where('product_id', $product->id)->whereNotNull('review')->get();
         return view('frontend.product_details', [
             'product' => $product,
             'galleries' => $galleries,
@@ -125,5 +127,21 @@ class FrontendController extends Controller
         ]);
 
         return back()->with('review', 'Review Submitted Successfully!');
+    }
+
+    function shop()
+    {
+        $products = Product::all();
+        $categories = Category::all();
+        $colors = Color::all();
+        $sizes = Size::all();
+        $new_products = Product::latest()->take(3)->get();
+        return view('frontend.shop',[
+            'products' => $products,
+            'categories' => $categories,
+            'colors' => $colors,
+            'sizes' => $sizes,
+            'new_products' => $new_products,
+        ]);
     }
 }

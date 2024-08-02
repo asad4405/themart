@@ -13,4 +13,9 @@ class Category extends Model
         'category_name',
         'icon',
     ];
+
+    function product()
+    {
+        return $this->belongsTo(Category::class,'category_id');
+    }
 }

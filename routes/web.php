@@ -29,6 +29,7 @@ Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('/product/details/{slug}', [FrontendController::class, 'product_details'])->name('product_details');
 Route::post('/getsize', [FrontendController::class, 'get_size']);
 Route::post('/getquantity', [FrontendController::class, 'get_quantity']);
+Route::get('/shop',[FrontendController::class,'shop'])->name('shop');
 
 
 Route::get('/dashboard', [HomeController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
