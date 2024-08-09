@@ -271,4 +271,13 @@
     </div>
     <!-- product-area-end -->
 @endsection
-
+{{-- @$() --}}
+@section('footer_script')
+    <script>
+        $('.search-btn').click(function() {
+            var search_input = $('#search_input').val();
+            var link = "{{ route('shop') }}"+"?search_input="+search_input;
+            window.location.href = link;
+        })
+    </script>
+@endsection
