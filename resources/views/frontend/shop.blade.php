@@ -29,8 +29,9 @@
                                 <div class="shop-filter-search">
                                     <form>
                                         <div>
-                                            <input type="text" class="form-control" placeholder="Search..">
-                                            <button type="submit"><i class="ti-search"></i></button>
+                                            <input id="search_input2" type="text" class="form-control"
+                                                placeholder="Search..">
+                                            <button class="search_btn2" type="button"><i class="ti-search"></i></button>
                                         </div>
                                     </form>
                                 </div>
@@ -262,6 +263,9 @@
                                     </div>
                                 </div>
                             @empty
+                                <div>
+                                    <h1>No Product Available</h1>
+                                </div>
                             @endforelse
                         </div>
                     </div>
@@ -271,13 +275,20 @@
     </div>
     <!-- product-area-end -->
 @endsection
-{{-- @$() --}}
 @section('footer_script')
     <script>
         $('.search-btn').click(function() {
             var search_input = $('#search_input').val();
-            var link = "{{ route('shop') }}"+"?search_input="+search_input;
+            var link = "{{ route('shop') }}" + "?search_input=" + search_input;
             window.location.href = link;
-        })
+        });
+    </script>
+
+    <script>
+        $('.search_btn2').click(function() {
+            var search_input2 = $('#search_input2').val();
+            var link = "{{ route('shop') }}" + "?search_input=" + search_input2;
+            window.location.href = link;
+        });
     </script>
 @endsection

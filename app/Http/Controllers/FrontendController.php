@@ -129,14 +129,27 @@ class FrontendController extends Controller
         return back()->with('review', 'Review Submitted Successfully!');
     }
 
-    function shop()
+    function shop(Request $request)
     {
-        $products = Product::all();
+        $data = $request->all();
+        $products = Product::where(function ($q) use ($data) {
+            if (!empty($data['search_input']) && $data['search_input'] != '' && $data['search_input'] != 'undefind') {
+                $q->where(function ($q) use ($data) {
+                    $q->where('product_name', 'like', '%' . $data['search_input'] . '%');
+                    $q->orWhere('short_desp', 'like', '%' . $data['search_input'] . '%');
+                    $q->orWhere('long_desp', 'like', '%' . $data['search_input'] . '%');
+                    $q->orWhere('addi_info', 'like', '%' . $data['search_input'] . '%');
+                });
+            }
+        })->get();
+
+
+
         $categories = Category::all();
         $colors = Color::all();
         $sizes = Size::all();
         $new_products = Product::latest()->take(3)->get();
-        return view('frontend.shop',[
+        return view('frontend.shop', [
             'products' => $products,
             'categories' => $categories,
             'colors' => $colors,
