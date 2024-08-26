@@ -8,8 +8,7 @@
                 <div class="col col-xs-12">
                     <div class="wpo-breadcumb-wrap">
                         <ol class="wpo-breadcumb-wrap">
-                            <li><a href="{{ route('index') }}">Home</a></li>
-                            <li>Recently Viewed</li>
+                            {{ Breadcrumbs::render('recent.view') }}
                         </ol>
                     </div>
                 </div>

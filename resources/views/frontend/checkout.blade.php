@@ -1,4 +1,7 @@
 @extends('frontend.master')
+@section('title')
+    Checkout
+@endsection
 @section('content')
     <!-- start wpo-page-title -->
     <section class="wpo-page-title">
@@ -8,9 +11,7 @@
                 <div class="col col-xs-12">
                     <div class="wpo-breadcumb-wrap">
                         <ol class="wpo-breadcumb-wrap">
-                            <li><a href="{{ route('index') }}">Home</a></li>
-                            <li><a href="{{ route('cart') }}">Cart</a></li>
-                            <li>Checkout</li>
+                            {{ Breadcrumbs::render('checkout') }}
                         </ol>
                     </div>
                 </div>
@@ -245,7 +246,8 @@
                                                     value="{{ session('S_sub_total') }}">
                                                 <input type="hidden" name="total"
                                                     value="{{ session('S_total_amount') }}">
-                                                <input type="hidden" name="customer_id" value="{{ Auth::guard('customer')->id() }}">
+                                                <input type="hidden" name="customer_id"
+                                                    value="{{ Auth::guard('customer')->id() }}">
                                                 <div id="open6" class="payment-name active">
                                                     <div class="contact-form form-style">
                                                         <div class="row">

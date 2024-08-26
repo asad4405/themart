@@ -8,7 +8,7 @@
     <meta name="author" content="wpOceans">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" type="image/png" href="{{ asset('frontend/assets') }}/images/favicon.png">
-    <title>Themart - eCommerce HTML5 Template</title>
+    <title>Themart - @yield('title')</title>
     <link href="{{ asset('frontend/assets') }}/css/themify-icons.css" rel="stylesheet">
     <link href="{{ asset('frontend/assets') }}/css/font-awesome.min.css" rel="stylesheet">
     <link href="{{ asset('frontend/assets') }}/css/flaticon_ecommerce.css" rel="stylesheet">
@@ -24,6 +24,14 @@
     <link href="{{ asset('frontend/assets') }}/css/odometer-theme-default.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link href="{{ asset('frontend/assets') }}/sass/style.css" rel="stylesheet">
+    <style>
+        .breadcrumb-item+.breadcrumb-item::before{
+            float: left;
+            padding-right: 5rem;
+            color: #6c757d;
+            content: '';
+        }
+    </style>
 </head>
 
 <body>
