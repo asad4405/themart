@@ -16,7 +16,9 @@ use App\Models\Subscribe;
 use App\Models\Tag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 
 class FrontendController extends Controller
 {
@@ -67,6 +69,18 @@ class FrontendController extends Controller
             ->selectRaw('sum(size_id) as sum, size_id')
             ->get();
         $reviews = OrderProduct::where('product_id', $product->id)->whereNotNull('review')->get();
+
+        // recent view
+        $all = Cookie::get('recent-view');
+        if (!$all) {
+            $all = "[]";
+        }
+        $all_info = json_decode($all, true);
+        $all_info = Arr::prepend($all_info, $product_id);
+        $recent_product_id = json_encode($all_info);
+
+        Cookie::queue('recent-view', $recent_product_id, 1000);
+
         return view('frontend.product_details', [
             'product' => $product,
             'galleries' => $galleries,
@@ -242,5 +256,18 @@ class FrontendController extends Controller
             'new_products' => $new_products,
             'tags' => $tags,
         ]);
+    }
+
+    function recent_view()
+    {
+        $recent_info = json_decode(Cookie::get('recent-view'), true);
+        if ($recent_info == NULL) {
+            $recent_view_product = [];
+            $recent_viewed = array_unique($recent_info);
+        } else {
+            $recent_viewed = array_unique($recent_info);
+        }
+        $recent_view_products = Product::find($recent_viewed);
+        return view('frontend.recent_view', compact('recent_view_products'));
     }
 }

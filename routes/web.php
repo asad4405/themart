@@ -31,6 +31,7 @@ Route::get('/product/details/{slug}', [FrontendController::class, 'product_detai
 Route::post('/getsize', [FrontendController::class, 'get_size']);
 Route::post('/getquantity', [FrontendController::class, 'get_quantity']);
 Route::get('/shop',[FrontendController::class,'shop'])->name('shop');
+Route::get('/recent/view',[FrontendController::class,'recent_view'])->name('recent.view');
 
 
 Route::get('/dashboard', [HomeController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
