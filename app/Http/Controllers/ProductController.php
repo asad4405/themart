@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductGrallery;
 use App\Models\Subcategory;
+use App\Models\Tag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -19,10 +20,12 @@ class ProductController extends Controller
         $categories = Category::all();
         $subcategories = Subcategory::all();
         $brands = Brand::all();
+        $tags = Tag::all();
         return view('admin.product.index', [
             'categories' => $categories,
             'subcategories' => $subcategories,
             'brands' => $brands,
+            'tags' => $tags,
         ]);
     }
 

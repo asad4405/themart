@@ -150,7 +150,7 @@
                                     @endphp
                                     <li><span>Tags:</span>
                                         @foreach ($after_explode as $tag)
-                                            <a href="" class="badge bg-success">{{ $tag }}</a>
+                                            <a class="badge bg-success">{{ App\Models\Tag::find($tag)->tag_name }}</a>
                                         @endforeach
                                     </li>
                                     <li>

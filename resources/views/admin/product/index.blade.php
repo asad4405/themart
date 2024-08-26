@@ -99,7 +99,12 @@
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label for="" class="form-label">Tags</label>
-                                        <input type="text" name="tags[]" placeholder="Tags" id="tags">
+                                        <select name="tags[]" id="select-gear" class="demo-default" multiple placeholder="Select gear...">
+                                            <option value="">Select Tag</option>
+                                            @foreach ($tags as $tag)
+                                                <option value="{{ $tag->id }}">{{ $tag->tag_name }}</option>
+                                            @endforeach
+                                        </select>
                                         @error('tags')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -172,16 +177,7 @@
 @endsection
 @section('footer_script')
     <script>
-        $("#tags").selectize({
-            delimiter: ",",
-            persist: false,
-            create: function(input) {
-                return {
-                    value: input,
-                    text: input,
-                };
-            },
-        });
+        $('#select-gear').selectize({ sortField: 'text' })
     </script>
 
     <script>

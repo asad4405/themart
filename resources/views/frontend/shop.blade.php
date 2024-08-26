@@ -30,7 +30,7 @@
                                     <form>
                                         <div>
                                             <input id="search_input2" type="text" class="form-control"
-                                                placeholder="Search..">
+                                                placeholder="Search.." value="{{ @$_GET['search_input'] }}">
                                             <button class="search_btn2" type="button"><i class="ti-search"></i></button>
                                         </div>
                                     </form>
@@ -46,7 +46,8 @@
                                             <label class="topcoat-radio-button__label">
                                                 {{ $category->category_name }}
                                                 <span>({{ App\Models\Product::where('category_id', $category->id)->count() }})</span>
-                                                <input type="radio" name="category_id" value="{{ $category->id }}">
+                                                <input type="radio" class="category" name="category_id"
+                                                    value="{{ $category->id }}">
                                                 <span class="topcoat-radio-button"></span>
                                             </label>
                                         </li>
@@ -60,23 +61,26 @@
                                 <h2>Filter by price</h2>
                                 <div class="shopWidgetWraper">
                                     <div class="priceFilterSlider">
-                                        <form action="#" method="" class="clearfix">
-                                            <div class="d-flex">
-                                                <div class="col-lg-6 pe-2">
-                                                    <label for="" class="form-label">Min</label>
-                                                    <input type="text" class="form-control" id="min"
-                                                        placeholder="Min">
+                                        <div class="clearfix">
+                                            <form action="">
+                                                <div class="d-flex">
+                                                    <div class="col-lg-6 pe-2">
+                                                        <label for="" class="form-label">Min</label>
+                                                        <input type="text" class="form-control" id="min"
+                                                            placeholder="Min" value="{{ @$_GET['min'] }}">
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label for="" class="form-label">Max</label>
+                                                        <input type="text" class="form-control" id="max"
+                                                            placeholder="Max" value="{{ @$_GET['max'] }}">
+                                                    </div>
                                                 </div>
-                                                <div class="col-lg-6">
-                                                    <label for="" class="form-label">Max</label>
-                                                    <input type="text" class="form-control" id="max"
-                                                        placeholder="Max">
+                                                <div class="mt-4 col-lg-12">
+                                                    <button type="button"
+                                                        class="form-control bg-light range">Submit</button>
                                                 </div>
-                                            </div>
-                                            <div class="mt-4 col-lg-12">
-                                                <button class="form-control bg-light">Submit</button>
-                                            </div>
-                                        </form>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -90,7 +94,9 @@
                                             <label class="topcoat-radio-button__label">
                                                 {{ $color->color_name }}
                                                 <span>({{ App\Models\Inventory::where('color_id', $color->id)->count() }})</span>
-                                                <input type="radio" name="color_id" value="{{ $color->id }}">
+                                                <input type="radio"
+                                                    {{ $color->id == @$_GET['color_id'] ? 'checked' : '' }} class="color"
+                                                    name="color_id" value="{{ $color->id }}">
                                                 <span class="topcoat-radio-button"></span>
                                             </label>
                                         </li>
@@ -107,7 +113,8 @@
                                             <label class="topcoat-radio-button__label">
                                                 {{ $size->size_name }}
                                                 <span>({{ App\Models\Inventory::where('size_id', $size->id)->count() }})</span>
-                                                <input type="radio" name="size_id" value="{{ $size->id }}">
+                                                <input type="radio" {{ $size->id == @$_GET['size_id'] ? 'checked' : '' }}
+                                                    class="size" name="size_id" value="{{ $size->id }}">
                                                 <span class="topcoat-radio-button"></span>
                                             </label>
                                         </li>
@@ -171,17 +178,13 @@
                         </div>
                         <div class="filter-item">
                             <div class="shop-filter-item tag-widget">
-                                <h2>Popular Tags</h2>
+                                <h2>Tags</h2>
                                 <ul>
-                                    <li><a href="#">Fashion</a></li>
-                                    <li><a href="#">Shoes</a></li>
-                                    <li><a href="#">Kids</a></li>
-                                    <li><a href="#">Theme</a></li>
-                                    <li><a href="#">Stylish</a></li>
-                                    <li><a href="#">Women</a></li>
-                                    <li><a href="#">Shop</a></li>
-                                    <li><a href="#">Men</a></li>
-                                    <li><a href="#">Blog</a></li>
+                                    @foreach ($tags as $tag)
+                                        <li><button value="{{ $tag->id }}"
+                                                class="tag btn {{ $tag->id == @$_GET['tag'] ? 'btn-primary' : 'btn-light' }}">{{ $tag->tag_name }}</button>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -200,10 +203,12 @@
                                 <li>
                                     <select name="show" class="sort">
                                         <option value="">Default Sorting</option>
-                                        <option value="1">Price Low To High</option>
-                                        <option value="2">Price High To Low</option>
-                                        <option value="2">A To Z</option>
-                                        <option value="2">Z To A</option>
+                                        <option {{ @$_GET['sort'] == 1 ? 'selected' : '' }} value="1">Price Low To
+                                            High</option>
+                                        <option {{ @$_GET['sort'] == 2 ? 'selected' : '' }} value="2">Price High To
+                                            Low</option>
+                                        <option {{ @$_GET['sort'] == 3 ? 'selected' : '' }} value="3">A To Z</option>
+                                        <option {{ @$_GET['sort'] == 4 ? 'selected' : '' }} value="4">Z To A</option>
                                     </select>
                                 </li>
                             </ul>
@@ -219,7 +224,7 @@
                                                 src="{{ asset('uploads/product') }}/{{ $product->preview }}"
                                                 alt="">
                                             @if ($product->after_discount)
-                                                <div class="tag sale">Sale</div>
+                                                <div class="tag sale">- {{ $product->discount }}%</div>
                                             @else
                                                 <div class="tag new">New</div>
                                             @endif
@@ -274,21 +279,4 @@
         </div>
     </div>
     <!-- product-area-end -->
-@endsection
-@section('footer_script')
-    <script>
-        $('.search-btn').click(function() {
-            var search_input = $('#search_input').val();
-            var link = "{{ route('shop') }}" + "?search_input=" + search_input;
-            window.location.href = link;
-        });
-    </script>
-
-    <script>
-        $('.search_btn2').click(function() {
-            var search_input2 = $('#search_input2').val();
-            var link = "{{ route('shop') }}" + "?search_input=" + search_input2;
-            window.location.href = link;
-        });
-    </script>
 @endsection

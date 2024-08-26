@@ -20,6 +20,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VariationController;
 use Illuminate\Support\Facades\Route;
@@ -111,6 +112,10 @@ Route::post('/subscribe/store', [FrontendController::class, 'subscribe_store'])-
 Route::get('/subscribe/list', [HomeController::class, 'subscribe_list'])->name('subscribe.list');
 Route::get('/subscribe/delete/{subscribe_id}', [HomeController::class, 'subscribe_delete'])->name('subscribe.delete');
 
+// tag
+Route::get('/tag',[TagController::class,'tag'])->name('tag');
+Route::post('/tag/store',[TagController::class,'tag_store'])->name('tag.store');
+Route::get('/tag/delete/{id}',[TagController::class,'tag_delete'])->name('tag.delete');
 
 // Customer
 Route::get('/customer/login', [CustomerAuthController::class, 'customer_login'])->name('customer.login');
