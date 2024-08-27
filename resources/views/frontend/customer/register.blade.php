@@ -126,6 +126,24 @@
                                             @enderror
                                         </div>
                                     </div>
+                                    <div class="col-lg-12 col-md-12 col-12 form-group">
+                                        <div class="captcha">
+                                            <span>{!! captcha_img() !!}</span>
+                                            <button type="button" class="btn btn-danger" class="reload"
+                                                id="reload">
+                                                &#x21bb;
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-3 col-lg-12 col-md-12 col-12 form-group">
+                                        <input id="captcha" type="text" class="form-control"
+                                            placeholder="Enter Captcha" name="captcha">
+                                    </div>
+                                    @error('captcha')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+
                                     <div class="col-lg-12 col-md-12 col-12">
                                         <button type="submit" class="wpo-accountBtn">Signup</button>
                                     </div>
@@ -154,9 +172,16 @@
     <script src="{{ asset('frontend/assets') }}/js/jquery-plugin-collection.js"></script>
     <!-- Custom script for this template -->
     <script src="{{ asset('frontend/assets') }}/js/script.js"></script>
+    <script type="text/javascript">
+        $('#reload').click(function() {
+            $.ajax({
+                type: 'GET',
+                url: '/reload-captcha',
+                success: function(data) {
+                    $(".captcha span").html(data.captcha);
+                }
+            });
+        });
+    </script>
 </body>
-
-
-<!-- Mirrored from wpocean.com/html/tf/themart/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 Jun 2023 08:56:41 GMT -->
-
 </html>

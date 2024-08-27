@@ -35,6 +35,7 @@ class CustomerRequest extends FormRequest
                 ->symbols()
             ],
             'password_confirmation' => 'required',
+            'captcha' => 'required|captcha',
         ];
     }
 }

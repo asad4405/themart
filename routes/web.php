@@ -137,6 +137,9 @@ Route::get('/customer/email/verify/{token}',[CustomerController::class, 'custome
 Route::get('/resend/email/verify',[CustomerController::class, 'resend_email_verify'])->name('resend.email.verify');
 Route::post('/resend/link/send',[CustomerController::class, 'resend_link_send'])->name('resend.link.send');
 
+// captcha
+Route::get('/reload-captcha', [CustomerAuthController::class, 'reloadCaptcha']);
+
 // Cart
 Route::post('/add/cart', [CartController::class, 'add_cart'])->name('add.cart')->middleware('customer.verified');
 Route::get('/cart/remove/{cart_id}', [CartController::class, 'cart_remove'])->name('cart.remove')->middleware('customer.verified');

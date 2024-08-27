@@ -6,6 +6,7 @@ use App\Http\Requests\CustomerRequest;
 use App\Models\Customer;
 use App\Models\CustomerEmailVerify;
 use App\Notifications\EmailVerifyNotification;
+use App\Rules\ReCaptcha;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
@@ -47,11 +48,17 @@ class CustomerAuthController extends Controller
         return back()->with('customer_success', 'Customer Restered Successfully, Please Verify your Email!');
     }
 
+    public function reloadCaptcha()
+    {
+        return response()->json(['captcha' => captcha_img()]);
+    }
+
     function customer_logged(Request $request)
     {
         $request->validate([
             'email' => 'required',
             'password' => 'required',
+            'g-recaptcha-response' => ['required', new ReCaptcha]
         ]);
 
         if (Customer::where('email', $request->email)->exists()) {

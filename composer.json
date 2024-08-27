@@ -15,6 +15,7 @@
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "laravolt/avatar": "^5.1",
+        "mews/captcha": "^3.3",
         "spatie/laravel-permission": "^6.9",
         "stripe/stripe-php": "^15.3"
     },
