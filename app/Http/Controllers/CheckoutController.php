@@ -134,6 +134,31 @@ class CheckoutController extends Controller
                 Coupon::where('coupon', $request->coupon)->decrement('limit');
             }
 
+            // sms with phone number
+
+            $url = "http://bulksmsbd.net/api/smsapi";
+            $api_key = "qgaBxl0v5UCdrPXv2dQJ";
+            $senderid = "8809617612922";
+            $number = $request->phone;
+            $message = "Congratulations! Your order has been placed. Your order ID: $order_id";
+
+            $data = [
+                "api_key" => $api_key,
+                "senderid" => $senderid,
+                "number" => $number,
+                "message" => $message
+            ];
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            $response = curl_exec($ch);
+            curl_close($ch);
+
+            // mail with gmail
+
             Mail::to($request->email)->send(new InvoiceMail($order_id));
 
             return redirect()->route('order.success')->with('success', $order_id);
