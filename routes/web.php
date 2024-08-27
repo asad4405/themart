@@ -31,6 +31,8 @@ Route::get('/product/details/{slug}', [FrontendController::class, 'product_detai
 Route::post('/getsize', [FrontendController::class, 'get_size']);
 Route::post('/getquantity', [FrontendController::class, 'get_quantity']);
 Route::get('/shop',[FrontendController::class,'shop'])->name('shop');
+Route::get('/contact',[FrontendController::class,'contact'])->name('contact');
+Route::post('/contact/post',[FrontendController::class,'contact_post'])->name('contact.post');
 Route::get('/recent/view',[FrontendController::class,'recent_view'])->name('recent.view');
 
 

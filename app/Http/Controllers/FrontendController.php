@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Banner;
 use App\Models\Category;
 use App\Models\Color;
+use App\Models\Contact;
 use App\Models\Inventory;
 use App\Models\Offer_one;
 use App\Models\Offer_two;
@@ -256,6 +257,28 @@ class FrontendController extends Controller
             'new_products' => $new_products,
             'tags' => $tags,
         ]);
+    }
+
+    function contact(){
+        return view('frontend.contact');
+    }
+
+    function contact_post(Request $request)
+    {
+        $request->validate([
+            '*'=> 'required',
+        ]);
+
+        Contact::insert([
+            'name' => $request->name,
+            'email' => $request->email,
+            'adress' => $request->adress,
+            'phone' => $request->phone,
+            'message' => $request->message,
+            'created_at' => Carbon::now(),
+        ]);
+
+        return back()->with('success','Message send Successfully!');
     }
 
     function recent_view()

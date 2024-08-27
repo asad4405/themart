@@ -253,6 +253,22 @@ License: You must have a valid license purchased only from above link or https:/
                             </ul>
                         </div>
                     </li>
+
+                    {{-- <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#contacts" role="button"
+                            aria-expanded="false" aria-controls="orders">
+                            <i class="link-icon" data-feather="pie-chart"></i>
+                            <span class="link-title">Contacts</span>
+                            <i class="link-arrow" data-feather="chevron-down"></i>
+                        </a>
+                        <div class="collapse" id="contacts">
+                            <ul class="nav sub-menu">
+                                <li class="nav-item">
+                                    <a href="{{ route('contact.lists') }}" class="nav-link">Contact Lists</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li> --}}
                     <li class="nav-item nav-category">Docs</li>
                     <li class="nav-item">
                         <a href="https://www.nobleui.com/html/documentation/docs.html" target="_blank"
