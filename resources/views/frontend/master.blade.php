@@ -25,7 +25,7 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link href="{{ asset('frontend/assets') }}/sass/style.css" rel="stylesheet">
     <style>
-        .breadcrumb-item+.breadcrumb-item::before{
+        .breadcrumb-item+.breadcrumb-item::before {
             float: left;
             padding-right: 5rem;
             color: #6c757d;
@@ -35,6 +35,21 @@
 </head>
 
 <body>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {},
+            Tawk_LoadStart = new Date();
+        (function() {
+            var s1 = document.createElement("script"),
+                s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/66cdf18aea492f34bc0aa7dc/1i6a7f2fq';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
 
     <!-- start page-wrapper -->
     <div class="page-wrapper">
@@ -120,7 +135,8 @@
                                 <div class="search-box">
                                     <div class="input-group">
                                         <input type="search" id="search_input" class="form-control"
-                                            placeholder="What are you looking for?" value="{{ @$_GET['search_input'] }}">
+                                            placeholder="What are you looking for?"
+                                            value="{{ @$_GET['search_input'] }}">
                                         <button class="search-btn" type="submit"> <i class="fi flaticon-search"></i>
                                         </button>
                                     </div>
@@ -316,7 +332,8 @@
                             </div>
                             <div class="col-lg-2 col-md-1 col-1">
                                 <div class="header-right">
-                                    <a href="{{ route('recent.view') }}" class="recent-btn"><i class="fi flaticon-refresh"></i>
+                                    <a href="{{ route('recent.view') }}" class="recent-btn"><i
+                                            class="fi flaticon-refresh"></i>
                                         <span>Recently Viewed</span>
                                     </a>
                                 </div>
