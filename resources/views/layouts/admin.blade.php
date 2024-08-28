@@ -535,6 +535,7 @@ License: You must have a valid license purchased only from above link or https:/
     <!-- custom js for this page -->
     <script src="{{ asset('backend') }}/assets/js/dashboard.js"></script>
     <script src="{{ asset('backend') }}/assets/js/datepicker.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/js/standalone/selectize.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
