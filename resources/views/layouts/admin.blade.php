@@ -1,12 +1,4 @@
 <!DOCTYPE html>
-<!--
-Template Name: NobleUI - Admin & Dashboard Template
-Author: NobleUI
-Website: https://www.nobleui.com
-Contact: nobleui123@gmail.com
-Purchase: https://1.envato.market/nobleui_admin
-License: You must have a valid license purchased only from above link or https://themeforest.net/user/nobleui/portfolio/ in order to legally use the theme for your project.
--->
 <html lang="en">
 
 <head>
@@ -14,7 +6,7 @@ License: You must have a valid license purchased only from above link or https:/
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>NobleUI Responsive Bootstrap 4 Dashboard Template</title>
+    <title>Themart - @yield('title')</title>
     <!-- core:css -->
     <link rel="stylesheet" href="{{ asset('backend') }}/assets/vendors/core/core.css">
     <!-- endinject -->
@@ -271,10 +263,9 @@ License: You must have a valid license purchased only from above link or https:/
                     </li> --}}
                     <li class="nav-item nav-category">Docs</li>
                     <li class="nav-item">
-                        <a href="https://www.nobleui.com/html/documentation/docs.html" target="_blank"
-                            class="nav-link">
+                        <a href="{{ route('faq.index') }}"class="nav-link">
                             <i class="link-icon" data-feather="hash"></i>
-                            <span class="link-title">Documentation</span>
+                            <span class="link-title">FAQ</span>
                         </a>
                     </li>
                 </ul>

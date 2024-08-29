@@ -323,7 +323,7 @@
                                             <a href="{{ route('shop') }}">Shop</a>
                                         </li>
                                         <li class="menu-item-has-children">
-                                            <a href="#">FAQ</a>
+                                            <a href="{{ route('faqs') }}">FAQ</a>
                                         </li>
                                         <li><a href="{{ route('contact') }}">Contact</a></li>
                                     </ul>

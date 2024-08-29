@@ -6,6 +6,7 @@ use App\Models\Banner;
 use App\Models\Category;
 use App\Models\Color;
 use App\Models\Contact;
+use App\Models\Faq;
 use App\Models\Inventory;
 use App\Models\Offer_one;
 use App\Models\Offer_two;
@@ -292,5 +293,11 @@ class FrontendController extends Controller
         }
         $recent_view_products = Product::find($recent_viewed);
         return view('frontend.recent_view', compact('recent_view_products'));
+    }
+
+    function faqs()
+    {
+        $faqs = Faq::all();
+        return view('frontend.faqs',compact('faqs'));
     }
 }

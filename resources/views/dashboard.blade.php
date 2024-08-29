@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    Dashboard
+@endsection
 @section('content')
     <h3>Welcome to Dashboard, <strong class="text-primary">{{ Auth::user()->name }}</strong></h3>
 
@@ -6,7 +9,7 @@
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-header">
-                    <h3>Last 7 days Order</h3>
+                    <h3>Last 7 days Orders</h3>
                 </div>
                 <div class="card-body">
                     <div>
