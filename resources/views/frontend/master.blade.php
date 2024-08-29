@@ -160,55 +160,38 @@
                                             </a>
                                     </li>
                                     <li>
+                                        @php
+                                            $wishlists = App\Models\Wishlist::where(
+                                                'customer_id',
+                                                Auth::guard('customer')->id(),
+                                            )->get();
+                                        @endphp
                                         <div class="header-wishlist-form-wrapper">
                                             <button class="wishlist-toggle-btn"> <i class="fi flaticon-heart"></i>
-                                                <span class="cart-count">3</span></button>
+                                                <span class="cart-count">{{ $wishlists->count() }}</span></button>
                                             <div class="mini-wislist-content">
                                                 <button class="mini-cart-close"><i class="ti-close"></i></button>
                                                 <div class="mini-cart-items">
-                                                    <div class="clearfix mini-cart-item">
-                                                        <div class="mini-cart-item-image">
-                                                            <a href="product.html"><img
-                                                                    src="{{ asset('frontend/assets') }}/images/cart/img-1.jpg"
-                                                                    alt></a>
+                                                    @foreach ($wishlists as $wishlist)
+                                                        <div class="clearfix mini-cart-item">
+                                                            <div class="mini-cart-item-image">
+                                                                <a href="{{ route('product_details',$wishlist->product->slug) }}"><img
+                                                                        src="{{ asset('uploads/product') }}/{{ $wishlist->product->preview }}"
+                                                                        alt></a>
+                                                            </div>
+                                                            <div class="mini-cart-item-des">
+                                                                <a href="{{ route('product_details',$wishlist->product->slug) }}">{{ $wishlist->product->product_name }}</a>
+                                                                <span class="mini-cart-item-price">{{ $wishlist->product->after_discount }} Taka</span>
+                                                                <span class="mini-cart-item-quantity"><a
+                                                                        href="{{ route('delete.wishlist', $wishlist->id) }}"><i
+                                                                            class="ti-close"></i></a></span>
+                                                            </div>
                                                         </div>
-                                                        <div class="mini-cart-item-des">
-                                                            <a href="product.html">Stylish Pink Coat</a>
-                                                            <span class="mini-cart-item-price">$150</span>
-                                                            <span class="mini-cart-item-quantity"><a href="#"><i
-                                                                        class="ti-close"></i></a></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="clearfix mini-cart-item">
-                                                        <div class="mini-cart-item-image">
-                                                            <a href="product.html"><img
-                                                                    src="{{ asset('frontend/assets') }}/images/cart/img-2.jpg"
-                                                                    alt></a>
-                                                        </div>
-                                                        <div class="mini-cart-item-des">
-                                                            <a href="product.html">Blue Bag</a>
-                                                            <span class="mini-cart-item-price">$120</span>
-                                                            <span class="mini-cart-item-quantity"><a href="#"><i
-                                                                        class="ti-close"></i></a></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="clearfix mini-cart-item">
-                                                        <div class="mini-cart-item-image">
-                                                            <a href="product.html"><img
-                                                                    src="{{ asset('frontend/assets') }}/images/cart/img-3.jpg"
-                                                                    alt></a>
-                                                        </div>
-                                                        <div class="mini-cart-item-des">
-                                                            <a href="product.html">Kids Blue Shoes</a>
-                                                            <span class="mini-cart-item-price">$120</span>
-                                                            <span class="mini-cart-item-quantity"><a href="#"><i
-                                                                        class="ti-close"></i></a></span>
-                                                        </div>
-                                                    </div>
+                                                    @endforeach
                                                 </div>
                                                 <div class="clearfix mini-cart-action">
                                                     <div class="mini-btn">
-                                                        <a href="wishlist.html" class="view-cart-btn">View
+                                                        <a href="{{ route('wishlist') }}" class="view-cart-btn">View
                                                             Wishlist</a>
                                                     </div>
                                                 </div>

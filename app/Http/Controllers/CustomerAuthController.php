@@ -58,7 +58,7 @@ class CustomerAuthController extends Controller
         $request->validate([
             'email' => 'required',
             'password' => 'required',
-            'g-recaptcha-response' => ['required', new ReCaptcha]
+            // 'g-recaptcha-response' => ['required', new ReCaptcha]
         ]);
 
         if (Customer::where('email', $request->email)->exists()) {

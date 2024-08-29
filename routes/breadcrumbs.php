@@ -44,7 +44,13 @@ Breadcrumbs::for('checkout', function (BreadcrumbTrail $trail) {
     $trail->push('Checkout', route('checkout'));
 });
 
-// Home > Checkout
+// Home > Wishlist
+Breadcrumbs::for('wishlist', function (BreadcrumbTrail $trail) {
+    $trail->parent('index');
+    $trail->push('Wishlist', route('wishlist'));
+});
+
+// Home > Recent view
 Breadcrumbs::for('recent.view', function (BreadcrumbTrail $trail) {
     $trail->parent('index');
     $trail->push('Recent Viewed', route('recent.view'));

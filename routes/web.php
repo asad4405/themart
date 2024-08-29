@@ -24,6 +24,7 @@ use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VariationController;
+use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -170,6 +171,11 @@ Route::post('/cancel/order/request/{id}', [OrderController::class, 'cancel_order
 Route::get('/order/cancel/list', [OrderController::class, 'order_cancel_list'])->name('order.cancel.list');
 Route::get('/order/cancel/details/{id}', [OrderController::class, 'order_cancel_details'])->name('order.cancel.details');
 Route::get('/order/cancel/accept/{id}', [OrderController::class, 'order_cancel_accept'])->name('order.cancel.accept');
+
+// Wishlist
+Route::get('/wishlist', [WishlistController::class, 'wishlist'])->name('wishlist');
+Route::post('/add/wishlist', [WishlistController::class, 'add_wishlist'])->name('add.wishlist');
+Route::get('/delete/wishlist/{id}', [WishlistController::class, 'delete_wishlist'])->name('delete.wishlist');
 
 // SSLCOMMERZ Start
 Route::get('/pay', [SslCommerzPaymentController::class, 'index'])->name('sslpay');

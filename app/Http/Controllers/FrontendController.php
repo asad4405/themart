@@ -16,6 +16,7 @@ use App\Models\ProductGrallery;
 use App\Models\Size;
 use App\Models\Subscribe;
 use App\Models\Tag;
+use App\Models\Wishlist;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -260,14 +261,15 @@ class FrontendController extends Controller
         ]);
     }
 
-    function contact(){
+    function contact()
+    {
         return view('frontend.contact');
     }
 
     function contact_post(Request $request)
     {
         $request->validate([
-            '*'=> 'required',
+            '*' => 'required',
         ]);
 
         Contact::insert([
@@ -279,7 +281,7 @@ class FrontendController extends Controller
             'created_at' => Carbon::now(),
         ]);
 
-        return back()->with('success','Message send Successfully!');
+        return back()->with('success', 'Message send Successfully!');
     }
 
     function recent_view()
@@ -298,6 +300,6 @@ class FrontendController extends Controller
     function faqs()
     {
         $faqs = Faq::all();
-        return view('frontend.faqs',compact('faqs'));
+        return view('frontend.faqs', compact('faqs'));
     }
 }

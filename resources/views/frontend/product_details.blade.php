@@ -137,7 +137,6 @@
                                     @else
                                         <a href="{{ route('customer.login') }}" class="theme-btn-s2">Login</a>
                                     @endauth
-                                    <a href="#" class="wl-btn"><i class="fi flaticon-heart"></i></a>
                                 </div>
                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
                                 <ul class="important-text">
@@ -161,6 +160,18 @@
                         </div>
                     </div>
                 </form>
+                <div>
+                    @auth('customer')
+                        <form action="{{ route('add.wishlist') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                            <button id="wishlist" type="submit" class="btn btn-primary">Add Wishlist</button>
+                        </form>
+                    @else
+                        <a href="{{ route('customer.login') }}" class="btn btn-info">
+                            Login</a>
+                    @endauth
+                </div>
             </div>
             <div class="product-tab-area">
                 <ul class="nav nav-mb-3 main-tab" id="tab" role="tablist">

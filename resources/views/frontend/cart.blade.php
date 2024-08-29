@@ -116,9 +116,6 @@ Cart
                                                     </div>
                                                 </td>
                                             </tr>
-                                            @php
-                                                $sub_total += $cart->product->after_discount * $cart->quantity;
-                                            @endphp
                                         @endforelse
                                     </tbody>
 

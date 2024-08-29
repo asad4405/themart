@@ -25,7 +25,7 @@
     <link href="{{ asset('frontend/assets') }}/css/jquery.fancybox.css" rel="stylesheet">
     <link href="{{ asset('frontend/assets') }}/css/odometer-theme-default.css" rel="stylesheet">
     <link href="{{ asset('frontend/assets') }}/sass/style.css" rel="stylesheet">
-    <script src="https://www.google.com/recaptcha/api.js?render={{ env('GOOGLE_RECAPTCHA_KEY') }}"></script>
+    {{-- <script src="https://www.google.com/recaptcha/api.js?render={{ env('GOOGLE_RECAPTCHA_KEY') }}"></script> --}}
 </head>
 
 <body>
@@ -37,7 +37,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <form class="wpo-accountWrapper" action="{{ route('customer.logged') }}" method="POST" id="contactUSForm">
+                        <form class="wpo-accountWrapper" action="{{ route('customer.logged') }}" method="POST">
                             @csrf
                             <div class="wpo-accountInfo">
                                 <div class="wpo-accountInfoHeader">
@@ -149,7 +149,7 @@
     <!-- Custom script for this template -->
     <script src="{{ asset('frontend/assets') }}/js/script.js"></script>
 
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         $('#contactUSForm').submit(function(event) {
             event.preventDefault();
 
@@ -164,7 +164,7 @@
                 });;
             });
         });
-    </script>
+    </script> --}}
 </body>
 
 </html>
