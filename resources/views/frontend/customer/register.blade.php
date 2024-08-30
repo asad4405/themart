@@ -148,6 +148,15 @@
                                         <button type="submit" class="wpo-accountBtn">Signup</button>
                                     </div>
                                 </div>
+                                <h4 class="or"><span>OR</span></h4>
+                                <ul class="wpo-socialLoginBtn">
+                                    <li><a href="{{ route('google.redirect') }}" class="bg-danger" tabindex="0" type="button"><span><i
+                                                    class="ti-google"></i></span></a></li>
+                                    <li>
+                                        <a href="{{ route('github.redirect') }}" class="bg-secondary" tabindex="0" type="button"><span><i
+                                                    class="ti-github"></i></span></a>
+                                    </li>
+                                </ul>
 
                                 <p class="subText">Sign into your pages account <a
                                         href="{{ route('customer.login') }}">Login</a></p>
@@ -184,4 +193,5 @@
         });
     </script>
 </body>
+
 </html>

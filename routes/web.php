@@ -18,6 +18,7 @@ use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SocialiteController;
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\SubCategoryController;
@@ -26,7 +27,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VariationController;
 use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
-
+use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('/product/details/{slug}', [FrontendController::class, 'product_details'])->name('product_details');
@@ -219,8 +220,14 @@ Route::post('/password/reset/confirm/{token}',[PasswordResetController::class, '
 // FAQ
 Route::resource('/faq',FaqController::class);
 
+// Social Register & login
+// google
+Route::get('/google/redirect',[SocialiteController::class,'google_redirect'])->name('google.redirect');
+Route::get('/google/callback',[SocialiteController::class,'google_callback'])->name('google.callback');
 
-
+// github
+Route::get('/github/redirect',[SocialiteController::class,'github_redirect'])->name('github.redirect');
+Route::get('/github/callback',[SocialiteController::class,'github_callback'])->name('github.callback');
 
 
 

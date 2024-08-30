@@ -117,11 +117,11 @@
                                 </div>
                                 <h4 class="or"><span>OR</span></h4>
                                 <ul class="wpo-socialLoginBtn">
-                                    <li><button class="bg-danger" tabindex="0" type="button"><span><i
-                                                    class="ti-google"></i></span></button></li>
+                                    <li><a href="{{ route('google.redirect') }}" class="bg-danger" tabindex="0" type="button"><span><i
+                                                    class="ti-google"></i></span></a></li>
                                     <li>
-                                        <button class="bg-secondary" tabindex="0" type="button"><span><i
-                                                    class="ti-github"></i></span></button>
+                                        <a href="{{ route('github.redirect') }}" class="bg-secondary" tabindex="0" type="button"><span><i
+                                                    class="ti-github"></i></span></a>
                                     </li>
                                 </ul>
                                 <p class="subText">Don't have an account? <a
