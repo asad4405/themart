@@ -221,6 +221,7 @@ Route::post('/password/reset/confirm/{token}',[PasswordResetController::class, '
 Route::resource('/faq',FaqController::class);
 
 // Social Register & login
+
 // google
 Route::get('/google/redirect',[SocialiteController::class,'google_redirect'])->name('google.redirect');
 Route::get('/google/callback',[SocialiteController::class,'google_callback'])->name('google.callback');
@@ -230,6 +231,8 @@ Route::get('/github/redirect',[SocialiteController::class,'github_redirect'])->n
 Route::get('/github/callback',[SocialiteController::class,'github_callback'])->name('github.callback');
 
 
+// api categories //
+Route::get('/api/category',[FrontendController::class,'api_category']);
 
 
 

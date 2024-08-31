@@ -16,7 +16,6 @@ use App\Models\ProductGrallery;
 use App\Models\Size;
 use App\Models\Subscribe;
 use App\Models\Tag;
-use App\Models\Wishlist;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -25,6 +24,13 @@ use Illuminate\Support\Facades\Cookie;
 
 class FrontendController extends Controller
 {
+    function api_category()
+    {
+        $categories = file_get_contents('http://127.0.0.1:8000/api/get/category');
+        $categories = json_decode($categories);
+        return view('api_cat',compact('categories'));
+    }
+
     function index()
     {
         $banners = Banner::all();
