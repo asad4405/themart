@@ -34,7 +34,7 @@ class PasswordResetController extends Controller
 
             Notification::send($customer, new PassResetNotification($info));
 
-            return back()->with('sent', "We have sent you a password reset lin, on $customer->email");
+            return back()->with('sent', "We have sent you a password reset link, on $customer->email");
         } else {
             return back()->with('exists', 'Email does not exists!');
         }

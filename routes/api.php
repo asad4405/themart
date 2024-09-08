@@ -27,7 +27,10 @@ Route::post('/customer/logout', [CustomerAuthenticationController::class, 'custo
 
 // Category
 Route::get('/get/category', [CategoryApiController::class, 'get_category']);
-Route::post('/category/store', [CategoryApiController::class, 'category_store']);
-Route::get('/category/{id}/show', [CategoryApiController::class, 'category_show']);
-Route::post('/category/{id}/update', [CategoryApiController::class, 'category_update']);
-Route::delete('/category/{id}/delete', [CategoryApiController::class, 'category_delete']);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/category/store', [CategoryApiController::class, 'category_store']);
+    Route::get('/category/{id}/show', [CategoryApiController::class, 'category_show']);
+    Route::post('/category/{id}/update', [CategoryApiController::class, 'category_update']);
+    Route::delete('/category/{id}/delete', [CategoryApiController::class, 'category_delete']);
+});
