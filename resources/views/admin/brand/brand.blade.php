@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    Brand
+@endsection
 @section('content')
     @can('brand_acces')
         <div class="row">

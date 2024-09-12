@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    Subcategory Add & List
+@endsection
 @section('content')
     @can('subcategory_access')
         <div class="row">

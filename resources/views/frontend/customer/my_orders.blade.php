@@ -1,4 +1,7 @@
 @extends('frontend.master')
+@section('title')
+    My Orders
+@endsection
 @section('content')
     <!-- start wpo-page-title -->
     <section class="wpo-page-title">

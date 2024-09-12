@@ -1,4 +1,7 @@
 @extends('frontend.master')
+@section('title')
+    Recent View
+@endsection
 @section('content')
     <!-- start wpo-page-title -->
     <section class="wpo-page-title">
@@ -81,9 +84,13 @@
                             </div>
                         </div>
                     @empty
-                    <tr>
-                        <td>No Recent View</td>
-                    </tr>
+                        <tr>
+                            <td>
+                                <span class="text-center alert alert-danger">
+                                    No Recent View Available
+                                </span>
+                            </td>
+                        </tr>
                     @endforelse
                     <div class="more-btn">
                         <a class="theme-btn-s2" href="{{ route('shop') }}">Load More</a>

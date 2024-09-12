@@ -294,8 +294,7 @@ class FrontendController extends Controller
     {
         $recent_info = json_decode(Cookie::get('recent-view'), true);
         if ($recent_info == NULL) {
-            $recent_view_product = [];
-            $recent_viewed = array_unique($recent_info);
+            $recent_viewed = [];
         } else {
             $recent_viewed = array_unique($recent_info);
         }

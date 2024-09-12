@@ -1,4 +1,7 @@
 @extends('frontend.master')
+@section('title')
+    Cancel Order
+@endsection
 @section('content')
     <div class="py-5 row">
         <div class="m-auto col-lg-8">
@@ -11,7 +14,8 @@
                     @if (session('req'))
                         <div class="alert alert-success">{{ session('req') }}</div>
                     @endif
-                    <form action="{{ route('cancel.order.request', $order->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('cancel.order.request', $order->id) }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label for="" class="form-label">Cancel Reason</label>

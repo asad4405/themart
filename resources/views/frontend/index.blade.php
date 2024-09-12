@@ -1,6 +1,6 @@
 @extends('frontend.master')
 @section('title')
-Home
+    Home
 @endsection
 @section('content')
     <!-- start of wpo-hero-section -->
@@ -16,7 +16,7 @@ Home
                             <div class="slide-title">
                                 <h2>{{ $banner->title }}</h2>
                             </div>
-                            <a class="theme-btn" href="product.html">Shop Now</a>
+                            <a class="theme-btn" href="">Shop Now</a>
                         </div>
                     </div>
                 @endforeach
@@ -95,7 +95,7 @@ Home
                             <div class="count-up">
                                 <div id="clock"></div>
                             </div>
-                            <a class="theme-btn-s2" href="product.html">Shop Now</a>
+                            <a class="theme-btn-s2" href="{{ route('shop') }}">Shop Now</a>
                         </div>
 
                     </div>
@@ -106,7 +106,7 @@ Home
                         <div class="text">
                             <h2>{{ $offer_twos->first()->title }}</h2>
                             <h4>{{ $offer_twos->first()->subtitle }}</h4>
-                            <a class="theme-btn-s2" href="product.html">Shop Now</a>
+                            <a class="theme-btn-s2" href="{{ route('shop') }}">Shop Now</a>
                         </div>
                     </div>
                 </div>
@@ -152,7 +152,9 @@ Home
                                     </h2>
                                     <div class="rating-product">
                                         @php
-                                            $reviews = App\Models\OrderProduct::where('product_id', $product->id)->whereNotNull('review')->get();
+                                            $reviews = App\Models\OrderProduct::where('product_id', $product->id)
+                                                ->whereNotNull('review')
+                                                ->get();
                                         @endphp
                                         @if ($reviews->count())
                                             @for ($i = 1; $i <= $reviews->average('star'); $i++)
@@ -173,41 +175,19 @@ Home
                                         @endif
                                     </div>
                                     <div class="shop-btn">
-                                        <a class="theme-btn-s2" href="{{ route('product_details', $product->slug) }}">Shop Now</a>
+                                        <a class="theme-btn-s2" href="{{ route('product_details', $product->slug) }}">Shop
+                                            Now</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     @empty
-                        {{-- <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                        <div class="product-item">
-                            <div class="image">
-                                <img src="{{ asset('frontend/assets') }}/images/interest-product/1.png" alt="">
-                                <div class="tag new">New</div>
-                            </div>
-                            <div class="text">
-                                <h2><a href="product-single.html">Wireless Headphones</a></h2>
-                                <div class="rating-product">
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <span>130</span>
-                                </div>
-                                <div class="price">
-                                    <span class="present-price">$120.00</span>
-                                    <del class="old-price">$200.00</del>
-                                </div>
-                                <div class="shop-btn">
-                                    <a class="theme-btn-s2" href="product.html">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
+                        <tr>
+                            <td>No Available Products!</td>
+                        </tr>
                     @endforelse
                     <div class="more-btn">
-                        <a class="theme-btn-s2" href="product.html">View All</a>
+                        <a class="theme-btn-s2" href="{{ route('shop') }}">View All</a>
                     </div>
                 </div>
             </div>
@@ -384,7 +364,7 @@ Home
                             @endif
                         </div>
                         <div class="text">
-                            <h2><a href="product-single.html" title="{{ $trending_product->product_name }}">
+                            <h2><a href="{{ route('product_details', $trending_product->slug) }}" title="{{ $trending_product->product_name }}">
                                     @if (strlen($trending_product->product_name) > 20)
                                         {{ substr($trending_product->product_name, 0, 20) . '...' }}
                                     @else
@@ -406,7 +386,7 @@ Home
                                 @endif
                             </div>
                             <div class="shop-btn">
-                                <a class="theme-btn-s2" href="product.html">Shop Now</a>
+                                <a class="theme-btn-s2" href="{{ route('product_details', $trending_product->slug) }}">Shop Now</a>
                             </div>
                         </div>
                     </div>

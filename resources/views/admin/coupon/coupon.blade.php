@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    Coupon
+@endsection
 @section('content')
     @can('coupon_access')
         <div class="row">

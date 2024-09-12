@@ -1,4 +1,7 @@
 @extends('frontend.master')
+@section('title')
+    Orders
+@endsection
 @if (session('success'))
 
     @section('content')

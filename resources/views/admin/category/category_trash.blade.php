@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    Category Trash
+@endsection
 @section('content')
     <div class="row">
         <div class="col-lg-8">

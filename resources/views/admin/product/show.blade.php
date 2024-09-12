@@ -1,7 +1,10 @@
 @extends('layouts.admin')
+@section('title')
+    Show Product
+@endsection
 @section('content')
     <div class="row">
-        <div class="col-lg-8">
+        <div class="m-auto col-lg-8">
             <div class="card">
                 <div class="card-header">
                     <h3>Show Product ({{ $product->product_name }})</h3>
@@ -34,15 +37,15 @@
                         </tr>
                         <tr>
                             <td>Short Description</td>
-                            <td>{!!$product->short_desp!!}</td>
+                            <td>{!! $product->short_desp !!}</td>
                         </tr>
                         <tr>
                             <td>Long Description</td>
-                            <td>{!!$product->long_desp!!}</td>
+                            <td>{!! $product->long_desp !!}</td>
                         </tr>
                         <tr>
                             <td>Additional Information</td>
-                            <td>{!!$product->addi_info!!}</td>
+                            <td>{!! $product->addi_info !!}</td>
                         </tr>
                         <tr>
                             <td>Preview</td>

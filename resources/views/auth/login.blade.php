@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>NobleUI Responsive Bootstrap 4 Dashboard Template</title>
+    <title>Themart - Admin Login</title>
     <!-- core:css -->
     <link rel="stylesheet" href="{{ asset('backend/assets') }}/vendors/core/core.css">
     <!-- endinject -->

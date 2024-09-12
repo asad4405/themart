@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    Tag
+@endsection
 @section('content')
     <div class="row">
         <div class="col-lg-8">
@@ -18,7 +21,7 @@
                                 <td>{{ $loop->index + 1 }}</td>
                                 <td>{{ $tag->tag_name }}</td>
                                 <td>
-                                    <a href="{{ route('tag.delete',$tag->id) }}" class="btn btn-danger">Delete</a>
+                                    <a href="{{ route('tag.delete', $tag->id) }}" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                         @empty

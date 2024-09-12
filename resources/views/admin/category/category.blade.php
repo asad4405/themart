@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    Category Add & List
+@endsection
 @section('content')
     @can('category_access')
         <div class="row">

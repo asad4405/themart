@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>NobleUI Responsive Bootstrap 4 Dashboard Template</title>
+    <title>Themart - 404 error</title>
     <!-- core:css -->
     <link rel="stylesheet" href="{{ asset('backend/assets') }}/vendors/core/core.css">
     <!-- endinject -->
@@ -33,7 +33,7 @@
                         <h4 class="mb-2">Page Not Found</h4>
                         <h6 class="text-muted mb-3 text-center">Oopps!! The page you were looking for doesn't exist.
                         </h6>
-                        <a href="../../dashboard-one.html" class="btn btn-primary">Back to home</a>
+                        <a href="{{ route('index') }}" class="btn btn-primary">Back to home</a>
                     </div>
                 </div>
 

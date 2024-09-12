@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
-<!-- Mirrored from wpocean.com/html/tf/themart/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 Jun 2023 08:56:41 GMT -->
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="wpOceans">
     <link rel="shortcut icon" type="image/png" href="{{ asset('frontend/assets') }}/images/favicon.png">
-    <title>Themart - eCommerce HTML5 Template</title>
+    <title>Themart - Customer Register</title>
     <link href="{{ asset('frontend/assets') }}/css/themify-icons.css" rel="stylesheet">
     <link href="{{ asset('frontend/assets') }}/css/font-awesome.min.css" rel="stylesheet">
     <link href="{{ asset('frontend/assets') }}/css/flaticon_ecommerce.css" rel="stylesheet">

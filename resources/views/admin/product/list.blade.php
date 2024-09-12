@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    Product List
+@endsection
 @section('content')
     @can('product_access')
         <div class="row">

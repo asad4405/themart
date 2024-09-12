@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    Order Cancel List
+@endsection
 @section('content')
     <div class="row">
         <div class="col-lg-8">
@@ -22,7 +25,8 @@
                         </tr>
                         <tr>
                             <td>Images</td>
-                            <td><img width="300" src="{{ asset('uploads/cancelorder') }}/{{ $details->image }}" alt=""></td>
+                            <td><img width="300" src="{{ asset('uploads/cancelorder') }}/{{ $details->image }}"
+                                    alt=""></td>
                         </tr>
                     </table>
                 </div>

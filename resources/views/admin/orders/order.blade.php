@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    Orders
+@endsection
 @section('content')
     @can('order_access')
         <div class="row">

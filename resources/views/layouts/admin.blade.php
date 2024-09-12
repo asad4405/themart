@@ -54,7 +54,7 @@
                             <span class="link-title">Dashboard</span>
                         </a>
                     </li>
-                    <li class="nav-item nav-category">web apps</li>
+                    <li class="nav-item nav-category">user</li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#emails" role="button" aria-expanded="false"
                             aria-controls="emails">
@@ -70,13 +70,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a href="pages/apps/chat.html" class="nav-link">
-                            <i class="link-icon" data-feather="message-square"></i>
-                            <span class="link-title">Chat</span>
-                        </a>
-                    </li>
-                    <li class="nav-item nav-category">Components</li>
+                    <li class="nav-item nav-category">Admin - Backend</li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#uiComponents" role="button"
                             aria-expanded="false" aria-controls="uiComponents">
@@ -118,6 +112,9 @@
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('variation') }}" class="nav-link">Variation</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('tag') }}" class="nav-link">tag</a>
                                 </li>
                             </ul>
                         </div>
@@ -163,28 +160,9 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#icons" role="button"
-                            aria-expanded="false" aria-controls="icons">
-                            <i class="link-icon" data-feather="smile"></i>
-                            <span class="link-title">Icons</span>
-                            <i class="link-arrow" data-feather="chevron-down"></i>
-                        </a>
-                        <div class="collapse" id="icons">
-                            <ul class="nav sub-menu">
-                                <li class="nav-item">
-                                    <a href="pages/icons/feather-icons.html" class="nav-link">Feather Icons</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/icons/flag-icons.html" class="nav-link">Flag Icons</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/icons/mdi-icons.html" class="nav-link">Mdi Icons</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item nav-category">Pages</li>
+
+                    <li class="nav-item nav-category">frontend</li>
+
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#general-pages" role="button"
                             aria-expanded="false" aria-controls="general-pages">
@@ -230,17 +208,43 @@
                             </ul>
                         </div>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#errorPages" role="button"
-                            aria-expanded="false" aria-controls="errorPages">
-                            <i class="link-icon" data-feather="cloud-off"></i>
-                            <span class="link-title">Tags</span>
+                        <a class="nav-link" data-toggle="collapse" href="#faq" role="button"
+                            aria-expanded="false" aria-controls="faq">
+                            <i class="link-icon" data-feather="hash"></i>
+                            <span class="link-title">FAQ</span>
                             <i class="link-arrow" data-feather="chevron-down"></i>
                         </a>
-                        <div class="collapse" id="errorPages">
+                        <div class="collapse" id="faq">
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
-                                    <a href="{{ route('tag') }}" class="nav-link">tag</a>
+                                    <a href="{{ route('faq.create') }}" class="nav-link">Add FAQ</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('faq.index') }}" class="nav-link">FAQ List</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#icons" role="button"
+                            aria-expanded="false" aria-controls="icons">
+                            <i class="link-icon" data-feather="smile"></i>
+                            <span class="link-title">Icons</span>
+                            <i class="link-arrow" data-feather="chevron-down"></i>
+                        </a>
+                        <div class="collapse" id="icons">
+                            <ul class="nav sub-menu">
+                                <li class="nav-item">
+                                    <a href="pages/icons/feather-icons.html" class="nav-link">Feather Icons</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="pages/icons/flag-icons.html" class="nav-link">Flag Icons</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="pages/icons/mdi-icons.html" class="nav-link">Mdi Icons</a>
                                 </li>
                             </ul>
                         </div>
@@ -261,13 +265,6 @@
                             </ul>
                         </div>
                     </li> --}}
-                    <li class="nav-item nav-category">Docs</li>
-                    <li class="nav-item">
-                        <a href="{{ route('faq.index') }}"class="nav-link">
-                            <i class="link-icon" data-feather="hash"></i>
-                            <span class="link-title">FAQ</span>
-                        </a>
-                    </li>
                 </ul>
             </div>
         </nav>

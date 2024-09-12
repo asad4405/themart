@@ -146,9 +146,6 @@
                         <div class="col-lg-4 col-12">
                             <div class="middle-right">
                                 <ul>
-                                    <li><a href="compare.html"><i
-                                                class="fi flaticon-right-and-left"></i><span>Compare</span></a>
-                                    </li>
                                     <li>
                                         @auth('customer')
                                             <a href="{{ route('customer.profile') }}"><i

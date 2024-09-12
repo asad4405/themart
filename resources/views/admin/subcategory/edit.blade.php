@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    Subcategory Edit
+@endsection
 @section('content')
     <div class="row">
         <div class="col-lg-6 m-auto">
@@ -18,7 +21,8 @@
                             <select name="category_id" class="form-select">
                                 <option value="">Select Category</option>
                                 @foreach ($categories as $category)
-                                    <option {{ $subcategory->category_id == $category->id ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->category_name }}</option>
+                                    <option {{ $subcategory->category_id == $category->id ? 'selected' : '' }}
+                                        value="{{ $category->id }}">{{ $category->category_name }}</option>
                                 @endforeach
                             </select>
                         </div>

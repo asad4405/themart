@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+User Add & List
+@endsection
 @section('content')
     @can('user_access')
         <div class="row">

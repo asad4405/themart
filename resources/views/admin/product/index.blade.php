@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    Add Product
+@endsection
 @section('content')
     @can('product_add')
         <div class="row">
@@ -99,7 +102,8 @@
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label for="" class="form-label">Tags</label>
-                                        <select name="tags[]" id="select-gear" class="demo-default" multiple placeholder="Select gear...">
+                                        <select name="tags[]" id="select-gear" class="demo-default" multiple
+                                            placeholder="Select gear...">
                                             <option value="">Select Tag</option>
                                             @foreach ($tags as $tag)
                                                 <option value="{{ $tag->id }}">{{ $tag->tag_name }}</option>
@@ -177,7 +181,9 @@
 @endsection
 @section('footer_script')
     <script>
-        $('#select-gear').selectize({ sortField: 'text' })
+        $('#select-gear').selectize({
+            sortField: 'text'
+        })
     </script>
 
     <script>

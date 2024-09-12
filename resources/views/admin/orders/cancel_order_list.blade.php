@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    Order Cancel List
+@endsection
 @section('content')
     @can('order_cancel_list')
         <div class="row">

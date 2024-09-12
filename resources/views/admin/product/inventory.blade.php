@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    Inventory
+@endsection
 @section('content')
     <div class="row">
         <div class="col-lg-8">
@@ -20,12 +23,12 @@
                         </tr>
                         @forelse ($inventories as $sl=> $inventory)
                             <tr>
-                                <td>{{ $sl+1 }}</td>
+                                <td>{{ $sl + 1 }}</td>
                                 <td>{{ $inventory->color->color_name }}</td>
                                 <td>{{ $inventory->size->size_name }}</td>
                                 <td>{{ $inventory->quantity }}</td>
                                 <td>
-                                    <a href="{{ route('inventory.delete',$inventory->id) }}" class="btn btn-danger btn-icon">
+                                    <a href="{{ route('inventory.delete', $inventory->id) }}" class="btn btn-danger btn-icon">
                                         <i data-feather="trash"></i>
                                     </a>
                                 </td>
