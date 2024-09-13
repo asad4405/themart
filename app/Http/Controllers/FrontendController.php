@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
+use App\Models\About_gallery;
 use App\Models\Banner;
 use App\Models\Category;
 use App\Models\Color;
@@ -28,7 +30,7 @@ class FrontendController extends Controller
     {
         $categories = file_get_contents('http://127.0.0.1:8000/api/get/category');
         $categories = json_decode($categories);
-        return view('api_cat',compact('categories'));
+        return view('api_cat', compact('categories'));
     }
 
     function index()
@@ -151,6 +153,13 @@ class FrontendController extends Controller
         ]);
 
         return back()->with('review', 'Review Submitted Successfully!');
+    }
+
+    function about()
+    {
+        $abouts = About::take(1)->get();
+        // $about_galleries = About_gallery::where()
+        return view('frontend.about',compact('abouts'));
     }
 
     function shop(Request $request)

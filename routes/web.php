@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartController;
@@ -34,6 +35,7 @@ Route::get('/product/details/{slug}', [FrontendController::class, 'product_detai
 Route::post('/getsize', [FrontendController::class, 'get_size']);
 Route::post('/getquantity', [FrontendController::class, 'get_quantity']);
 Route::get('/shop',[FrontendController::class,'shop'])->name('shop');
+Route::get('/about',[FrontendController::class,'about'])->name('about');
 Route::get('/contact',[FrontendController::class,'contact'])->name('contact');
 Route::post('/contact/post',[FrontendController::class,'contact_post'])->name('contact.post');
 Route::get('/recent/view',[FrontendController::class,'recent_view'])->name('recent.view');
@@ -55,6 +57,11 @@ require __DIR__ . '/auth.php';
 Route::get('/banner', [BannerController::class, 'banner'])->name('banner');
 Route::post('/banner/store', [BannerController::class, 'banner_store'])->name('banner.store');
 Route::get('/banner/delete/{banner_id}', [BannerController::class, 'banner_delete'])->name('banner.delete');
+
+// About
+Route::get('/admin/about',[AboutController::class,'admin_about'])->name('admin.about');
+Route::post('/admin/about/store',[AboutController::class,'admin_about_store'])->name('admin.about.store');
+Route::get('/admin/about/delete/{id}',[AboutController::class,'admin_about_delete'])->name('admin.about.delete');
 
 // user //
 Route::get('/user/update', [UserController::class, 'user_update'])->name('user.update');

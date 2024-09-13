@@ -229,22 +229,16 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#icons" role="button"
-                            aria-expanded="false" aria-controls="icons">
+                        <a class="nav-link" data-toggle="collapse" href="#about" role="button"
+                            aria-expanded="false" aria-controls="about">
                             <i class="link-icon" data-feather="smile"></i>
-                            <span class="link-title">Icons</span>
+                            <span class="link-title">About</span>
                             <i class="link-arrow" data-feather="chevron-down"></i>
                         </a>
-                        <div class="collapse" id="icons">
+                        <div class="collapse" id="about">
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
-                                    <a href="pages/icons/feather-icons.html" class="nav-link">Feather Icons</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/icons/flag-icons.html" class="nav-link">Flag Icons</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/icons/mdi-icons.html" class="nav-link">Mdi Icons</a>
+                                    <a href="{{ route('admin.about') }}" class="nav-link">Add About</a>
                                 </li>
                             </ul>
                         </div>

@@ -14,6 +14,12 @@ Breadcrumbs::for('product_details', function (BreadcrumbTrail $trail) {
     $trail->push('Product Details', route('product_details', ''));
 });
 
+// Home > About
+Breadcrumbs::for('about', function (BreadcrumbTrail $trail) {
+    $trail->parent('index');
+    $trail->push('About', route('about'));
+});
+
 // Home > Shop
 Breadcrumbs::for('shop', function (BreadcrumbTrail $trail) {
     $trail->parent('index');
