@@ -59,7 +59,7 @@
                 </form>
             </div>
 
-            @can('add_category')
+            @can('category_add')
                 <div class="col-lg-4">
                     <div class="card">
                         <div class="card-header">

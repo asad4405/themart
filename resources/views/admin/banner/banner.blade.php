@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    Banner
+@endsection
 @section('content')
     <div class="row">
         <div class="col-lg-8">
@@ -24,7 +27,7 @@
                                 </td>
                                 <td>{{ $banner->title }}</td>
                                 <td>
-                                    <a href="{{ route('banner.delete',$banner->id) }}" class="btn btn-danger btn-icon">
+                                    <a href="{{ route('banner.delete', $banner->id) }}" class="btn btn-danger btn-icon">
                                         <i data-feather="trash"></i>
                                     </a>
                                 </td>

@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    Role Manager
+@endsection
 @section('content')
     <div class="row">
         <div class="m-auto col-lg-8">

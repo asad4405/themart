@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    Role Manager
+@endsection
 @section('content')
     @can('role_access')
         <div class="row">
@@ -89,27 +92,27 @@
                 </div>
             </div>
             <div class="col-lg-4">
-                {{-- <div class="card">
-            <div class="card-header">
-                <h3>Add New Permission</h3>
-            </div>
-            <div class="card-body">
-                @if (session('permission_success'))
-                    <div class="alert alert-success">{{ session('permission_success') }}</div>
-                @endif
-                <form action="{{ route('permission.store') }}" method="POST">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="" class="form-label">Permission Name</label>
-                        <input type="text" class="form-control" name="permission_name">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Add New Permission</h3>
                     </div>
+                    <div class="card-body">
+                        @if (session('permission_success'))
+                            <div class="alert alert-success">{{ session('permission_success') }}</div>
+                        @endif
+                        <form action="{{ route('permission.store') }}" method="POST">
+                            @csrf
+                            <div class="mb-3">
+                                <label for="" class="form-label">Permission Name</label>
+                                <input type="text" class="form-control" name="permission_name">
+                            </div>
 
-                    <div class="mb-3">
-                        <button type="submit" class="btn btn-primary">Add Permission</button>
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-primary">Add Permission</button>
+                            </div>
+                        </form>
                     </div>
-                </form>
-            </div>
-        </div> --}}
+                </div>
 
                 <div class="mt-4 card">
                     <div class="card-header">

@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    Profile
+@endsection
 @section('content')
     <div class="row">
         <div class="col-md-6 grid-margin stretch-card">
@@ -18,7 +21,7 @@
                             <label for="exampleInputEmail1">Email </label>
                             <input type="email" class="form-control" name="email" value="{{ Auth::user()->email }}">
                         </div>
-                        <button type="submit" class="btn btn-primary mr-2">Update</button>
+                        <button type="submit" class="mr-2 btn btn-primary">Update</button>
                     </form>
                 </div>
             </div>
@@ -65,7 +68,7 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary mr-2">Update Password</button>
+                        <button type="submit" class="mr-2 btn btn-primary">Update Password</button>
                     </form>
                 </div>
             </div>
@@ -81,7 +84,8 @@
                         <div class="alert alert-success">{{ session('photo_update') }}</div>
                     @endif
 
-                    <form class="forms-sample" action="{{ route('photo.update') }}" method="POST" enctype="multipart/form-data">
+                    <form class="forms-sample" action="{{ route('photo.update') }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="">Photo</label>
@@ -91,7 +95,7 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary mr-2">Update Photo</button>
+                        <button type="submit" class="mr-2 btn btn-primary">Update Photo</button>
                     </form>
                 </div>
             </div>

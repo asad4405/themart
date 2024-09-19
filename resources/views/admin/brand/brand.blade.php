@@ -3,7 +3,7 @@
     Brand
 @endsection
 @section('content')
-    @can('brand_acces')
+    @can('brand_access')
         <div class="row">
             <div class="col-lg-8">
                 <div class="card">

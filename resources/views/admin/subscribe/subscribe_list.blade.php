@@ -1,7 +1,10 @@
 @extends('layouts.admin')
+@section('title')
+    Sublicribe List
+@endsection
 @section('content')
     <div class="row">
-        <div class="col-lg-10 m-auto">
+        <div class="m-auto col-lg-10">
             <div class="card">
                 <div class="card-header">
                     <h3>Subscriber Lists</h3>
@@ -29,7 +32,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="3" class="text-danger text-center">No Suscribers Available!</td>
+                                <td colspan="3" class="text-center text-danger">No Suscribers Available!</td>
                             </tr>
                         @endforelse
                     </table>

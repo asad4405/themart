@@ -244,7 +244,7 @@
                         </div>
                     </li>
 
-                    {{-- <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#contacts" role="button"
                             aria-expanded="false" aria-controls="orders">
                             <i class="link-icon" data-feather="pie-chart"></i>
@@ -254,11 +254,11 @@
                         <div class="collapse" id="contacts">
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
-                                    <a href="{{ route('contact.lists') }}" class="nav-link">Contact Lists</a>
+                                    <a href="{{ route('contact.list') }}" class="nav-link">Contact Lists</a>
                                 </li>
                             </ul>
                         </div>
-                    </li> --}}
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -424,8 +424,7 @@
                                 @if (Auth::user()->photo)
                                     <img src="{{ asset('uploads/user') }}/{{ Auth::user()->photo }}" alt="profile">
                                 @else
-                                {{ Auth::user()->name }}
-                                    {{-- <img src="{{ Avatar::create(Auth::user()->name)->toBase64() }}" /> --}}
+                                    <img src="{{ Avatar::create(Auth::user()->name)->toBase64() }}" />
                                 @endif
                             </a>
                             <div class="dropdown-menu" aria-labelledby="profileDropdown">
@@ -435,8 +434,7 @@
                                             <img src="{{ asset('uploads/user') }}/{{ Auth::user()->photo }}"
                                                 alt="">
                                         @else
-                                        {{ Auth::user()->name }}
-                                            {{-- <img src="{{ Avatar::create(Auth::user()->name)->toBase64() }}" /> --}}
+                                            <img src="{{ Avatar::create(Auth::user()->name)->toBase64() }}" />
                                         @endif
                                     </div>
                                     <div class="text-center info">

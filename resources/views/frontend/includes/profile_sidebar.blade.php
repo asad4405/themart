@@ -16,7 +16,7 @@
             <li class="py-3 list-group-item bg-light"><a href="{{ route('customer.profile') }}" class="text-dark">Profile</a></li>
             <li class="py-3 list-group-item bg-light"><a href="{{ route('my.orders') }}" class="text-dark">My
                     Order</a></li>
-            <li class="py-3 list-group-item bg-light"><a href="" class="text-dark">My Wishlist</a></li>
+        <li class="py-3 list-group-item bg-light"><a href="{{ route('wishlist') }}" class="text-dark">My Wishlist</a></li>
             <li class="py-3 list-group-item bg-light"><a href="{{ route('customer.logout') }}"
                     class="text-dark">Logout</a></li>
         </ul>

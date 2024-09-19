@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-User Add & List
+    User Add & List
 @endsection
 @section('content')
     @can('user_access')
@@ -25,7 +25,7 @@ User Add & List
 
                             @foreach ($users as $sl => $user)
                                 <tr>
-                                    <td>{{ $users->firstitem()+$sl}}</td>
+                                    <td>{{ $users->firstitem() + $sl }}</td>
                                     <td>
                                         @if (Auth::user()->photo == null)
                                             <img src="{{ asset('uploads/user') }}/{{ $user->photo }}" alt=""
