@@ -424,7 +424,8 @@
                                 @if (Auth::user()->photo)
                                     <img src="{{ asset('uploads/user') }}/{{ Auth::user()->photo }}" alt="profile">
                                 @else
-                                    <img src="{{ Avatar::create(Auth::user()->name)->toBase64() }}" />
+                                {{ Auth::user()->name }}
+                                    {{-- <img src="{{ Avatar::create(Auth::user()->name)->toBase64() }}" /> --}}
                                 @endif
                             </a>
                             <div class="dropdown-menu" aria-labelledby="profileDropdown">
@@ -434,7 +435,8 @@
                                             <img src="{{ asset('uploads/user') }}/{{ Auth::user()->photo }}"
                                                 alt="">
                                         @else
-                                            <img src="{{ Avatar::create(Auth::user()->name)->toBase64() }}" />
+                                        {{ Auth::user()->name }}
+                                            {{-- <img src="{{ Avatar::create(Auth::user()->name)->toBase64() }}" /> --}}
                                         @endif
                                     </div>
                                     <div class="text-center info">
